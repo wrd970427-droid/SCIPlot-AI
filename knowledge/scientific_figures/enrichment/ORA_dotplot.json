@@ -1,0 +1,114 @@
+{
+  "id": "enrichment.ORA_dotplot",
+  "name": "ORA enrichment dotplot",
+  "category": "enrichment",
+  "scientific_questions": [
+    "Which biological terms are over-represented in a gene set?"
+  ],
+  "typical_data_contexts": [
+    "RNA-seq",
+    "proteomics"
+  ],
+  "data_schema_id": "enrichment_table",
+  "required_fields": [
+    {
+      "role": "term",
+      "type": "string"
+    },
+    {
+      "role": "significance",
+      "type": "numeric"
+    },
+    {
+      "role": "gene_ratio",
+      "type": "numeric"
+    }
+  ],
+  "optional_fields": [
+    {
+      "role": "count",
+      "type": "integer"
+    }
+  ],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "clusterProfiler",
+    "enrichplot",
+    "ggplot2"
+  ],
+  "statistical_parameters": [
+    {
+      "name": "p_adjust_method",
+      "default": "BH"
+    },
+    {
+      "name": "qvalue_cutoff",
+      "default": 0.05
+    }
+  ],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "enrichplot",
+      "url": "https://bioconductor.org/packages/enrichplot/",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "ORA",
+    "GO",
+    "KEGG",
+    "富集气泡图",
+    "dotplot"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "core",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

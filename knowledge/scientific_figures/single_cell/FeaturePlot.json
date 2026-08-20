@@ -1,0 +1,98 @@
+{
+  "id": "single_cell.FeaturePlot",
+  "name": "FeaturePlot (gene on embedding)",
+  "category": "single_cell",
+  "scientific_questions": [
+    "Where is a gene expressed on the embedding?"
+  ],
+  "typical_data_contexts": [
+    "scRNA-seq"
+  ],
+  "data_schema_id": "single_cell_embedding_with_feature",
+  "required_fields": [
+    {
+      "role": "cell_id",
+      "type": "string"
+    },
+    {
+      "role": "dimension_1",
+      "type": "numeric"
+    },
+    {
+      "role": "dimension_2",
+      "type": "numeric"
+    },
+    {
+      "role": "feature_value",
+      "type": "numeric"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "Seurat"
+  ],
+  "statistical_parameters": [],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2 theme reference",
+      "url": "https://ggplot2.tidyverse.org/reference/theme.html",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "FeaturePlot",
+    "基因表达UMAP"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "core",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

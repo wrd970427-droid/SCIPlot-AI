@@ -1,0 +1,95 @@
+{
+  "id": "comparative_genomics.gene_presence_absence",
+  "name": "Gene presence/absence heatmap",
+  "category": "comparative_genomics",
+  "scientific_questions": [
+    "Which accessory genes vary across genomes?"
+  ],
+  "typical_data_contexts": [
+    "pangenome"
+  ],
+  "data_schema_id": "gene_pa_matrix",
+  "required_fields": [
+    {
+      "role": "genome",
+      "type": "string"
+    },
+    {
+      "role": "gene",
+      "type": "string"
+    },
+    {
+      "role": "presence",
+      "type": "binary"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "matrix"
+  ],
+  "recommended_r_packages": [
+    "ComplexHeatmap",
+    "ggplot2"
+  ],
+  "statistical_parameters": [],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2 theme reference",
+      "url": "https://ggplot2.tidyverse.org/reference/theme.html",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "pangenome",
+    "presence absence"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "advanced",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

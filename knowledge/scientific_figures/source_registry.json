@@ -1,0 +1,484 @@
+{
+  "schema_version": "0.1.0",
+  "notes": [
+    "FigureYa mappings are scientific abstractions only.",
+    "Do not copy FigureYa Rmd/source into SCIPlot.",
+    "Module inventory from https://github.com/ying-ge/FigureYa/.github/docs/all_included.txt"
+  ],
+  "figureya": {
+    "source_url": "https://github.com/ying-ge/FigureYa",
+    "paper_doi": "10.1002/imm3.70005",
+            "modules_listed_in_all_included": 199,
+    "modules_mapped_here": 43,
+    "mapped_figure_families": [
+      "basic_statistics.barplot",
+      "basic_statistics.boxplot",
+      "basic_statistics.correlation_heatmap",
+      "basic_statistics.scatter",
+      "basic_statistics.violin",
+      "cell_communication.ligand_receptor_bubble",
+      "clinical.Cox_forest",
+      "clinical.Kaplan_Meier",
+      "clinical.ROC",
+      "clinical.calibration",
+      "clinical.decision_curve",
+      "clinical.nomogram",
+      "clinical.swimmer",
+      "clinical.time_dependent_ROC",
+      "enrichment.GO_hierarchy",
+      "enrichment.GSEA_running_score",
+      "enrichment.ORA_dotplot",
+      "genomics.circos_genome",
+      "genomics.manhattan",
+      "machine_learning.lasso_path",
+      "microbiome.beta_PCoA",
+      "mutation_genomics.CNV_plot",
+      "mutation_genomics.TMB",
+      "mutation_genomics.TiTv",
+      "mutation_genomics.lollipop",
+      "mutation_genomics.mutual_exclusivity",
+      "mutation_genomics.oncoplot",
+      "network.Sankey",
+      "network.network",
+      "single_cell.UMAP",
+      "single_cell.trajectory",
+      "time_series.STEM_heatmap",
+      "transcriptomics.DEG_heatmap",
+      "transcriptomics.PCA",
+      "transcriptomics.multi_volcano",
+      "transcriptomics.volcano"
+    ],
+    "mappings": [
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa59volcanoV2",
+        "mapped_figure_family": "transcriptomics.volcano",
+        "data_context": "RNA-seq DE",
+        "scientific_purpose": "volcano",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa59volcanoV2",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa321volcanoSE",
+        "mapped_figure_family": "transcriptomics.volcano",
+        "data_context": "RNA-seq DE",
+        "scientific_purpose": "volcano SE",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa321volcanoSE",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa135multiVolcano",
+        "mapped_figure_family": "transcriptomics.multi_volcano",
+        "data_context": "multi-contrast DE",
+        "scientific_purpose": "multi volcano",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa135multiVolcano",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa9heatmap",
+        "mapped_figure_family": "transcriptomics.DEG_heatmap",
+        "data_context": "expression matrix",
+        "scientific_purpose": "heatmap",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa9heatmap",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa91cluster_heatmap",
+        "mapped_figure_family": "transcriptomics.DEG_heatmap",
+        "data_context": "clustered heatmap",
+        "scientific_purpose": "heatmap",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa91cluster_heatmap",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa101PCA",
+        "mapped_figure_family": "transcriptomics.PCA",
+        "data_context": "sample ordination",
+        "scientific_purpose": "PCA",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa101PCA",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa244PCAPlot",
+        "mapped_figure_family": "transcriptomics.PCA",
+        "data_context": "PCA",
+        "scientific_purpose": "PCA",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa244PCAPlot",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa12box",
+        "mapped_figure_family": "basic_statistics.boxplot",
+        "data_context": "group comparison",
+        "scientific_purpose": "boxplot",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa12box",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa162boxViolin",
+        "mapped_figure_family": "basic_statistics.violin",
+        "data_context": "box+violin",
+        "scientific_purpose": "violin",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa162boxViolin",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa1survivalCurve_update",
+        "mapped_figure_family": "clinical.Kaplan_Meier",
+        "data_context": "survival",
+        "scientific_purpose": "KM",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa1survivalCurve_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa36nSurvV3",
+        "mapped_figure_family": "clinical.Kaplan_Meier",
+        "data_context": "survival",
+        "scientific_purpose": "KM",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa36nSurvV3",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa24ROC",
+        "mapped_figure_family": "clinical.ROC",
+        "data_context": "diagnostic",
+        "scientific_purpose": "ROC",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa24ROC",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa85timeROC",
+        "mapped_figure_family": "clinical.time_dependent_ROC",
+        "data_context": "prognostic",
+        "scientific_purpose": "timeROC",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa85timeROC",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa33DCA_update",
+        "mapped_figure_family": "clinical.decision_curve",
+        "data_context": "clinical benefit",
+        "scientific_purpose": "DCA",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa33DCA_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa30nomogram_update",
+        "mapped_figure_family": "clinical.nomogram",
+        "data_context": "prognostic model",
+        "scientific_purpose": "nomogram",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa30nomogram_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa138NiceCalibration",
+        "mapped_figure_family": "clinical.calibration",
+        "data_context": "calibration",
+        "scientific_purpose": "calibration",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa138NiceCalibration",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa6rHRsV2",
+        "mapped_figure_family": "clinical.Cox_forest",
+        "data_context": "hazard ratios",
+        "scientific_purpose": "forest",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa6rHRsV2",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa186swimmerplot",
+        "mapped_figure_family": "clinical.swimmer",
+        "data_context": "patient timeline",
+        "scientific_purpose": "swimmer",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa186swimmerplot",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa18oncoplot_update",
+        "mapped_figure_family": "mutation_genomics.oncoplot",
+        "data_context": "mutation landscape",
+        "scientific_purpose": "oncoplot",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa18oncoplot_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa42oncoprintV2_update",
+        "mapped_figure_family": "mutation_genomics.oncoplot",
+        "data_context": "oncoPrint",
+        "scientific_purpose": "oncoplot",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa42oncoprintV2_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa19Lollipop",
+        "mapped_figure_family": "mutation_genomics.lollipop",
+        "data_context": "protein mutations",
+        "scientific_purpose": "lollipop",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa19Lollipop",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa51TMB_update",
+        "mapped_figure_family": "mutation_genomics.TMB",
+        "data_context": "TMB",
+        "scientific_purpose": "TMB",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa51TMB_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa139TMB_titv",
+        "mapped_figure_family": "mutation_genomics.TiTv",
+        "data_context": "Ti/Tv",
+        "scientific_purpose": "titv",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa139TMB_titv",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa288MutualExclusivity",
+        "mapped_figure_family": "mutation_genomics.mutual_exclusivity",
+        "data_context": "exclusivity",
+        "scientific_purpose": "mutex",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa288MutualExclusivity",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa60GSEA_clusterProfilerV2",
+        "mapped_figure_family": "enrichment.GSEA_running_score",
+        "data_context": "GSEA",
+        "scientific_purpose": "GSEA",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa60GSEA_clusterProfilerV2",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa13GSEA_Java_update",
+        "mapped_figure_family": "enrichment.GSEA_running_score",
+        "data_context": "GSEA",
+        "scientific_purpose": "GSEA",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa13GSEA_Java_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa83enrichment",
+        "mapped_figure_family": "enrichment.ORA_dotplot",
+        "data_context": "ORA",
+        "scientific_purpose": "enrichment",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa83enrichment",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa52GOplot",
+        "mapped_figure_family": "enrichment.GO_hierarchy",
+        "data_context": "GO",
+        "scientific_purpose": "GO",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa52GOplot",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa25Sankey_update",
+        "mapped_figure_family": "network.Sankey",
+        "data_context": "flow",
+        "scientific_purpose": "Sankey",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa25Sankey_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa26circos_R",
+        "mapped_figure_family": "genomics.circos_genome",
+        "data_context": "circos",
+        "scientific_purpose": "circos",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa26circos_R",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa43ManhattanV2",
+        "mapped_figure_family": "genomics.manhattan",
+        "data_context": "GWAS",
+        "scientific_purpose": "manhattan",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa43ManhattanV2",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa229PCOA",
+        "mapped_figure_family": "microbiome.beta_PCoA",
+        "data_context": "ordination",
+        "scientific_purpose": "PCoA",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa229PCOA",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa31lasso_update",
+        "mapped_figure_family": "machine_learning.lasso_path",
+        "data_context": "regularization",
+        "scientific_purpose": "lasso",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa31lasso_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa306slingshot",
+        "mapped_figure_family": "single_cell.trajectory",
+        "data_context": "trajectory",
+        "scientific_purpose": "slingshot",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa306slingshot",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa235scDEG",
+        "mapped_figure_family": "single_cell.UMAP",
+        "data_context": "sc DEG context",
+        "scientific_purpose": "scDEG",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa235scDEG",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa178receptorLigand",
+        "mapped_figure_family": "cell_communication.ligand_receptor_bubble",
+        "data_context": "LR",
+        "scientific_purpose": "LR",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa178receptorLigand",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa81immune_network",
+        "mapped_figure_family": "network.network",
+        "data_context": "immune network",
+        "scientific_purpose": "network",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa81immune_network",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa112venn",
+        "mapped_figure_family": "basic_statistics.barplot",
+        "data_context": "set overlap (mapped loosely)",
+        "scientific_purpose": "venn",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa112venn",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa37correlationV2_update",
+        "mapped_figure_family": "basic_statistics.scatter",
+        "data_context": "correlation",
+        "scientific_purpose": "scatter",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa37correlationV2_update",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa126CorrelationHeatmap",
+        "mapped_figure_family": "basic_statistics.correlation_heatmap",
+        "data_context": "correlation heatmap",
+        "scientific_purpose": "heatmap",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa126CorrelationHeatmap",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa260CNV",
+        "mapped_figure_family": "mutation_genomics.CNV_plot",
+        "data_context": "CNV",
+        "scientific_purpose": "CNV",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa260CNV",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa307CNVHeatmap",
+        "mapped_figure_family": "mutation_genomics.CNV_plot",
+        "data_context": "CNV heatmap",
+        "scientific_purpose": "CNV",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa307CNVHeatmap",
+        "verification_status": "verified"
+      },
+      {
+        "external_source": "FigureYa",
+        "external_module": "FigureYa98STEMheatmapV2",
+        "mapped_figure_family": "time_series.STEM_heatmap",
+        "data_context": "temporal modules",
+        "scientific_purpose": "STEM",
+        "r_packages_if_publicly_documented": [],
+        "source_url": "https://github.com/ying-ge/FigureYa/tree/main/FigureYa98STEMheatmapV2",
+        "verification_status": "verified"
+      }
+    ]
+  }
+}

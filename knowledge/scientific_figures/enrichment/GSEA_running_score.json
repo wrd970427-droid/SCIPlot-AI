@@ -1,0 +1,107 @@
+{
+  "id": "enrichment.GSEA_running_score",
+  "name": "GSEA running-score plot",
+  "category": "enrichment",
+  "scientific_questions": [
+    "Is a gene set coordinated up or down in a ranked list?"
+  ],
+  "typical_data_contexts": [
+    "RNA-seq"
+  ],
+  "data_schema_id": "gsea_result_table",
+  "required_fields": [
+    {
+      "role": "term",
+      "type": "string"
+    },
+    {
+      "role": "running_score",
+      "type": "numeric"
+    },
+    {
+      "role": "rank",
+      "type": "integer"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "clusterProfiler",
+    "enrichplot"
+  ],
+  "statistical_parameters": [
+    {
+      "name": "nPerm",
+      "default": 1000
+    },
+    {
+      "name": "minGSSize",
+      "default": 10
+    }
+  ],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [
+    "transcriptomics.volcano",
+    "enrichment.GSEA_ridge"
+  ],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "clusterProfiler",
+      "url": "https://bioconductor.org/packages/clusterProfiler/",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "GSEA",
+    "running score"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "core",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

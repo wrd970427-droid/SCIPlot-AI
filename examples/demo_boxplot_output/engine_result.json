@@ -1,0 +1,85 @@
+{
+  "status": "success",
+  "figure_definition_id": "basic_statistics.boxplot",
+  "message": "R script generated",
+  "missing_fields": [],
+  "questions": [],
+  "requirement": {
+    "figure_definition_id": "basic_statistics.boxplot",
+    "data_schema_id": "group_numeric_table",
+    "status": "ready",
+    "missing_fields": [],
+    "questions": [],
+    "known_mapping": {
+      "group": "group",
+      "value": "value",
+      "data_source": "input.csv"
+    },
+    "statistics": {
+      "test_method": "wilcox"
+    },
+    "visual_parameters": {
+      "variant": "boxplot",
+      "fill": "group",
+      "alpha": 0.75,
+      "line_width": 0.5,
+      "point_size": 1.5,
+      "point_jitter": true,
+      "fill_palette": "npg",
+      "width_mm": 89,
+      "height_mm": 70,
+      "font_size": 7,
+      "legend_position": "right",
+      "border": "none"
+    },
+    "style_profile": {
+      "journal_style": "Nature"
+    },
+    "message": "ready"
+  },
+  "spec": {
+    "spec_version": "0.2.0",
+    "figure_definition_id": "basic_statistics.boxplot",
+    "data_schema_id": "group_numeric_table",
+    "data_mapping": {
+      "group": "group",
+      "value": "value"
+    },
+    "data_source": "input.csv",
+    "statistics": {
+      "test_method": "wilcox"
+    },
+    "visual_parameters": {
+      "variant": "boxplot",
+      "fill": "group",
+      "alpha": 0.75,
+      "line_width": 0.5,
+      "point_size": 1.5,
+      "point_jitter": true,
+      "fill_palette": "npg",
+      "width_mm": 89,
+      "height_mm": 70,
+      "font_size": 7,
+      "legend_position": "right",
+      "border": "none"
+    },
+    "style_profile": {
+      "journal_style": "Nature"
+    },
+    "output": {
+      "pdf": true,
+      "svg": true,
+      "png": true
+    },
+    "qc_requirement": {
+      "min_font_pt": 6,
+      "min_line_width": 0.3,
+      "require_vector": true
+    },
+    "legacy_volcano_spec": null
+  },
+  "r_script_path": "D:\\AI_project\\Agent\\examples\\demo_boxplot_output\\figure.R",
+  "output_files": [],
+  "qc_report": null,
+  "log": ""
+}

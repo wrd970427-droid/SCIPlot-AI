@@ -1,0 +1,930 @@
+{
+  "schema_version": "0.1.0",
+  "last_reviewed": "2026-08-19",
+  "status_legend": {
+    "official_requirement": "Taken from the journal or publisher author/figure guide. Agents must not treat nearby numbers as official.",
+    "recommended_default": "Not a stated journal rule. Used only so SCIPlot can fill FigureSpecification when the user does not specify a value."
+  },
+  "notes": [
+    "Widths and font minima are usually official; default figure HEIGHT is almost never official. Do not present height_mm as a journal mandate.",
+    "Vector PDF/SVG output does not need a raster dpi; dpi applies to PNG/TIFF export.",
+    "Color palettes (npg / Cell-like) are community conventions, not publisher house palettes."
+  ],
+  "journals": {
+    "Nature": {
+      "display_name": "Nature",
+      "publisher": "Springer Nature",
+      "family": "Nature",
+      "sources": [
+        {
+          "title": "Nature final submission / artwork",
+          "url": "https://www.nature.com/nature/for-authors/final-submission"
+        },
+        {
+          "title": "Nature manuscript checklist (artwork)",
+          "url": "https://www.nature.com/documents/nature_3d_ms_checklist.pdf"
+        },
+        {
+          "title": "Nature guide to authors (PDF)",
+          "url": "https://www.nature.com/documents/Final_guide_to_authors.pdf"
+        }
+      ],
+      "single_column": {
+        "width_mm": 89,
+        "height_mm": 89,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Nature standard single-column width is 89 mm.",
+          "height_mm": "Nature does not fix figure height. Full page depth is 247 mm; about 170 mm is suggested if the legend must sit on the same page. 89 mm is a square canvas suitable for a single-panel volcano plot."
+        }
+      },
+      "one_and_half_column": {
+        "width_mm_range": [120, 136],
+        "status": "official_requirement",
+        "notes": "Nature allows a column-and-a-half width of 120–136 mm when needed."
+      },
+      "double_column": {
+        "width_mm": 183,
+        "height_mm": 120,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Nature standard double-column width is 183 mm.",
+          "height_mm": "Not specified. 120 mm is a compact double-column default for a volcano plot, well below page depth."
+        }
+      },
+      "max_height_mm": {
+        "value": 247,
+        "status": "official_requirement",
+        "notes": "Full depth of a Nature page is 247 mm."
+      },
+      "font": {
+        "family": "Arial",
+        "family_alternatives": ["Helvetica", "Arial"],
+        "axis_text": 7,
+        "axis_title": 7,
+        "legend": 7,
+        "panel_label": 8,
+        "status": {
+          "family": "official_requirement",
+          "axis_text": "official_requirement",
+          "axis_title": "official_requirement",
+          "legend": "recommended_default",
+          "panel_label": "official_requirement"
+        },
+        "notes": {
+          "family": "Sans-serif, preferably Helvetica or Arial, same font in all figures.",
+          "axis_text": "Nature asks for ~7 pt figure text; minimum 5 pt, maximum 7 pt for non-panel lettering.",
+          "axis_title": "Kept at 7 pt so it does not exceed Nature's 7 pt maximum for non-panel text. Do not use 8 pt axis titles for Nature.",
+          "legend": "Not separately specified; 7 pt matches the figure-text rule.",
+          "panel_label": "Panel labels a, b, c: 8 pt bold upright."
+        }
+      },
+      "line": {
+        "main": 0.5,
+        "axis": 0.5,
+        "min": 0.5,
+        "status": {
+          "main": "official_requirement",
+          "axis": "recommended_default",
+          "min": "official_requirement"
+        },
+        "notes": "Nature checklist: lines preferably 0.5 point (0.18 mm) so they remain visible at print size."
+      },
+      "output": {
+        "dpi": 600,
+        "dpi_photo_min": 300,
+        "preferred": ["pdf", "eps", "tiff"],
+        "accepted_also": ["ai", "psd", "jpg"],
+        "status": {
+          "dpi": "recommended_default",
+          "dpi_photo_min": "official_requirement",
+          "preferred": "official_requirement"
+        },
+        "notes": {
+          "dpi": "300 dpi is the photographic minimum. 600 dpi is a raster default for line-art PNG/TIFF; volcano plots should be vector PDF whenever possible.",
+          "preferred": "Graphs: unflattened EPS/PDF/AI. Photos: TIFF/PSD at 300–600 dpi. SVG is a SCIPlot product format, not a Nature-listed preferred format."
+        }
+      },
+      "margin": {
+        "top_mm": 2,
+        "right_mm": 2,
+        "bottom_mm": 2,
+        "left_mm": 2,
+        "status": "recommended_default",
+        "notes": "Nature does not publish a numeric ggplot margin. These values only reduce wasted whitespace."
+      },
+      "theme": {
+        "background": "white",
+        "grid": "none",
+        "border": "none",
+        "status": "recommended_default",
+        "notes": "White background is consistent with Nature guidance to avoid clutter; no official ggplot theme is named."
+      },
+      "spec_defaults": {
+        "journal_style": "Nature",
+        "size": {
+          "column": "single",
+          "width_mm": 89,
+          "height_mm": 89,
+          "dpi": 600
+        },
+        "font": {
+          "font_family": "Arial",
+          "axis_text_size": 7,
+          "axis_title_size": 7,
+          "legend_size": 7,
+          "title_size": 7
+        },
+        "theme": {
+          "background": "white",
+          "grid": "none",
+          "border": "none"
+        },
+        "geometry": {
+          "point_size": 1.5,
+          "line_width": 0.5,
+          "alpha": 0.7
+        },
+        "output": {
+          "pdf": true,
+          "svg": true,
+          "png": true
+        }
+      }
+    },
+    "Cell": {
+      "display_name": "Cell",
+      "publisher": "Cell Press / Elsevier",
+      "family": "Cell Press",
+      "sources": [
+        {
+          "title": "Cell Press figure guidelines",
+          "url": "https://www.cell.com/information-for-authors/figure-guidelines"
+        }
+      ],
+      "single_column": {
+        "width_mm": 85,
+        "height_mm": 89,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Cell Press two-column research layout: 8.5 cm (85 mm) for 1 column.",
+          "height_mm": "Not a fixed height. Recommended maximum figure area is about 165 × 200 mm to leave room for the legend."
+        }
+      },
+      "one_and_half_column": {
+        "width_mm": 114,
+        "status": "official_requirement",
+        "notes": "1.5 column = 11.4 cm (114 mm)."
+      },
+      "double_column": {
+        "width_mm": 174,
+        "height_mm": 120,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Full page width = 17.4 cm (174 mm).",
+          "height_mm": "Not specified. 120 mm is a compact default for a volcano plot."
+        }
+      },
+      "max_height_mm": {
+        "value": 200,
+        "status": "recommended_default",
+        "notes": "Cell Press recommends figures fit on one page; suggested maximum about 6.5 × 8 in (165 × 200 mm) including room for the caption."
+      },
+      "font": {
+        "family": "Arial",
+        "family_alternatives": ["Arial"],
+        "axis_text": 7,
+        "axis_title": 8,
+        "legend": 7,
+        "panel_label": 8,
+        "status": {
+          "family": "official_requirement",
+          "axis_text": "official_requirement",
+          "axis_title": "official_requirement",
+          "legend": "recommended_default",
+          "panel_label": "recommended_default"
+        },
+        "notes": {
+          "family": "Cell Press: embed fonts and use Arial.",
+          "axis_text": "Text should be about 6–8 pt at the desired print size. 7 pt is inside that official range.",
+          "axis_title": "8 pt is the top of the official 6–8 pt range.",
+          "panel_label": "Panels labelled with capital letters; exact panel-label point size is not specified."
+        }
+      },
+      "line": {
+        "main": 0.5,
+        "axis": 0.5,
+        "min": 0.5,
+        "max": 1.5,
+        "status": {
+          "main": "official_requirement",
+          "axis": "recommended_default",
+          "min": "official_requirement",
+          "max": "official_requirement"
+        },
+        "notes": "Stroke width should be in the 0.5–1.5 pt range; not narrower than 0.5 pt."
+      },
+      "output": {
+        "dpi": 600,
+        "dpi_color_min": 300,
+        "dpi_bw_min": 500,
+        "dpi_line_art_min": 1000,
+        "preferred": ["tiff", "pdf"],
+        "accepted_also": ["jpeg", "eps"],
+        "status": {
+          "dpi": "recommended_default",
+          "dpi_color_min": "official_requirement",
+          "dpi_bw_min": "official_requirement",
+          "dpi_line_art_min": "official_requirement",
+          "preferred": "official_requirement"
+        },
+        "notes": {
+          "dpi": "For a vector volcano PDF, 600 dpi is only used when rasterizing PNG. Cell Press asks 1000 dpi for raster line-art; prefer vector PDF instead of a 1000 dpi PNG.",
+          "color": "RGB for color figures."
+        }
+      },
+      "margin": {
+        "top_mm": 2,
+        "right_mm": 2,
+        "bottom_mm": 2,
+        "left_mm": 2,
+        "status": "recommended_default"
+      },
+      "theme": {
+        "background": "white",
+        "grid": "none",
+        "border": "none",
+        "status": "recommended_default"
+      },
+      "spec_defaults": {
+        "journal_style": "Cell",
+        "size": {
+          "column": "single",
+          "width_mm": 85,
+          "height_mm": 89,
+          "dpi": 600
+        },
+        "font": {
+          "font_family": "Arial",
+          "axis_text_size": 7,
+          "axis_title_size": 8,
+          "legend_size": 7,
+          "title_size": 8
+        },
+        "theme": {
+          "background": "white",
+          "grid": "none",
+          "border": "none"
+        },
+        "geometry": {
+          "point_size": 1.5,
+          "line_width": 0.5,
+          "alpha": 0.7
+        },
+        "output": {
+          "pdf": true,
+          "svg": true,
+          "png": true
+        }
+      }
+    },
+    "Science": {
+      "display_name": "Science",
+      "publisher": "AAAS",
+      "family": "Science",
+      "sources": [
+        {
+          "title": "Science instructions for preparing an initial manuscript",
+          "url": "https://www.science.org/content/page/instructions-preparing-initial-manuscript"
+        },
+        {
+          "title": "Science instructions for preparing a revised manuscript",
+          "url": "https://www.science.org/content/page/instructions-preparing-revised-manuscript"
+        }
+      ],
+      "single_column": {
+        "width_mm": 57,
+        "height_mm": 70,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Printed width is usually 5.7 cm (1 column). This is substantially narrower than Nature/Cell single column.",
+          "height_mm": "Not specified. 70 mm is a compact volcano default; lettering must still be ≥5 pt after reduction."
+        }
+      },
+      "double_column": {
+        "width_mm": 121,
+        "height_mm": 90,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "12.1 cm (2 columns)."
+        }
+      },
+      "triple_column": {
+        "width_mm": 184,
+        "status": "official_requirement",
+        "notes": "18.4 cm (3 columns)."
+      },
+      "max_height_mm": {
+        "value": 230,
+        "status": "recommended_default",
+        "notes": "Science does not publish a single max figure height in the pages cited above. Keep the figure plus legend on one page and avoid wasted white space."
+      },
+      "font": {
+        "family": "Helvetica",
+        "family_alternatives": ["Helvetica", "Arial"],
+        "axis_text": 7,
+        "axis_title": 7,
+        "legend": 7,
+        "panel_label": 8,
+        "status": {
+          "family": "recommended_default",
+          "axis_text": "official_requirement",
+          "axis_title": "recommended_default",
+          "legend": "recommended_default",
+          "panel_label": "recommended_default"
+        },
+        "notes": {
+          "family": "Revised-manuscript text guidance mentions Times New Roman for the paper. Figure lettering should remain legible after reduction; Science also advises sans-serif (Helvetica preferred) for figures. SCIPlot uses Helvetica/Arial for figures, not Times.",
+          "axis_text": "Lettering about 7 pt (2.5 mm) high after reduction; not smaller than 5 pt. Avoid wide variation in type size within one figure."
+        }
+      },
+      "line": {
+        "main": 0.5,
+        "axis": 0.5,
+        "min": 0.5,
+        "status": "recommended_default",
+        "notes": "No numeric stroke width in the cited Science author pages. 0.5 pt matches common print-safety practice and Nature/Cell floors."
+      },
+      "output": {
+        "dpi": 600,
+        "dpi_min": 300,
+        "preferred": ["pdf", "eps", "ai", "tiff"],
+        "status": {
+          "dpi": "recommended_default",
+          "dpi_min": "official_requirement",
+          "preferred": "official_requirement"
+        },
+        "notes": {
+          "dpi_min": "Initial submission: 300 dpi. Revised: grayscale/color ≥300 dpi; line art as vector preferred, otherwise ≥300 dpi and preferably higher.",
+          "preferred": "Vector (Illustrator/PDF/EPS) preferred. PowerPoint is not accepted."
+        }
+      },
+      "margin": {
+        "top_mm": 2,
+        "right_mm": 2,
+        "bottom_mm": 2,
+        "left_mm": 2,
+        "status": "recommended_default"
+      },
+      "theme": {
+        "background": "white",
+        "grid": "none",
+        "border": "none",
+        "status": "recommended_default",
+        "notes": "Science asks authors to maximize space for data and avoid clutter/white space."
+      },
+      "spec_defaults": {
+        "journal_style": "Science",
+        "size": {
+          "column": "single",
+          "width_mm": 57,
+          "height_mm": 70,
+          "dpi": 600
+        },
+        "font": {
+          "font_family": "Helvetica",
+          "axis_text_size": 7,
+          "axis_title_size": 7,
+          "legend_size": 7,
+          "title_size": 7
+        },
+        "theme": {
+          "background": "white",
+          "grid": "none",
+          "border": "none"
+        },
+        "geometry": {
+          "point_size": 1.2,
+          "line_width": 0.5,
+          "alpha": 0.7
+        },
+        "output": {
+          "pdf": true,
+          "svg": true,
+          "png": true
+        }
+      }
+    },
+    "Nature Communications": {
+      "display_name": "Nature Communications",
+      "publisher": "Springer Nature",
+      "family": "Nature",
+      "sources": [
+        {
+          "title": "Brief guide for submission to Nature Communications",
+          "url": "https://www.nature.com/documents/ncomms-submission-guide.pdf"
+        },
+        {
+          "title": "Nature Communications manuscript tracking author instructions",
+          "url": "https://mts-ncomms.nature.com/cgi-bin/main.plex?form_type=display_auth_instructions"
+        }
+      ],
+      "single_column": {
+        "width_mm": 89,
+        "height_mm": 89,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Nature family single-column width is 89 mm. Some Nature Communications pages list 88 mm; SCIPlot uses 89 mm and records the 88 mm variant below.",
+          "width_mm_variant": "88 mm appears in some Nat Commun how-to-submit text. Treat 88 vs 89 mm as the same single-column intent.",
+          "height_mm": "Not fixed. 89 mm is a square single-panel default."
+        }
+      },
+      "double_column": {
+        "width_mm": 183,
+        "height_mm": 120,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Nature family double-column 183 mm. Some Nat Commun pages list 180 mm. SCIPlot uses 183 mm.",
+          "height_mm": "Not specified."
+        }
+      },
+      "max_height_mm": {
+        "value": 247,
+        "status": "recommended_default",
+        "notes": "Nat Commun does not restate Nature's 247 mm page depth in the brief guide. Keep figures on one page."
+      },
+      "font": {
+        "family": "Arial",
+        "family_alternatives": ["Arial", "Helvetica"],
+        "axis_text": 7,
+        "axis_title": 8,
+        "legend": 7,
+        "panel_label": 8,
+        "status": {
+          "family": "official_requirement",
+          "axis_text": "official_requirement",
+          "axis_title": "official_requirement",
+          "legend": "recommended_default",
+          "panel_label": "recommended_default"
+        },
+        "notes": {
+          "family": "Same typeface (Arial or Helvetica) for all figures; Symbol font for Greek letters.",
+          "axis_text": "Prepare at print size. Optimum 5–8 pt (brief guide). MTS text also cites 8 pt as an optimum in one place. 7 pt is inside the official range.",
+          "axis_title": "8 pt is the top of the 5–8 pt optimum range."
+        }
+      },
+      "line": {
+        "main": 0.5,
+        "axis": 0.5,
+        "min": 0.25,
+        "status": {
+          "main": "recommended_default",
+          "axis": "recommended_default",
+          "min": "official_requirement"
+        },
+        "notes": "MTS instructions: no lines thinner than 0.25 pt (0.09 mm) at print size. 0.5 pt is a safer recommended default."
+      },
+      "output": {
+        "dpi": 600,
+        "dpi_min": 300,
+        "preferred": ["pdf", "eps", "ai", "tiff"],
+        "not_supported_by_journal": ["svg"],
+        "status": {
+          "dpi": "recommended_default",
+          "dpi_min": "official_requirement",
+          "preferred": "official_requirement"
+        },
+        "notes": {
+          "dpi_min": "RGB, 300 dpi or higher for bitmap images.",
+          "not_supported_by_journal": "Nat Commun MTS lists SVG among formats it cannot support. SCIPlot may still emit SVG for author editing; submission copies should be PDF/TIFF/EPS."
+        }
+      },
+      "margin": {
+        "top_mm": 2,
+        "right_mm": 2,
+        "bottom_mm": 2,
+        "left_mm": 2,
+        "status": "recommended_default"
+      },
+      "theme": {
+        "background": "white",
+        "grid": "none",
+        "border": "none",
+        "status": "recommended_default",
+        "notes": "Display items on a white background; avoid excessive boxing and decorative 3D effects."
+      },
+      "spec_defaults": {
+        "journal_style": "Nature Communications",
+        "size": {
+          "column": "single",
+          "width_mm": 89,
+          "height_mm": 89,
+          "dpi": 600
+        },
+        "font": {
+          "font_family": "Arial",
+          "axis_text_size": 7,
+          "axis_title_size": 8,
+          "legend_size": 7,
+          "title_size": 8
+        },
+        "theme": {
+          "background": "white",
+          "grid": "none",
+          "border": "none"
+        },
+        "geometry": {
+          "point_size": 1.5,
+          "line_width": 0.5,
+          "alpha": 0.7
+        },
+        "output": {
+          "pdf": true,
+          "svg": true,
+          "png": true
+        }
+      }
+    },
+    "Cancer Cell": {
+      "display_name": "Cancer Cell",
+      "publisher": "Cell Press / Elsevier",
+      "family": "Cell Press",
+      "inherits": "Cell",
+      "sources": [
+        {
+          "title": "Cell Press figure guidelines (applies to Cell Press journals including Cancer Cell)",
+          "url": "https://www.cell.com/information-for-authors/figure-guidelines"
+        }
+      ],
+      "notes": "Cancer Cell does not publish a separate figure-size table. Column widths, font range, stroke range, and dpi follow Cell Press research-article rules (same as Cell).",
+      "single_column": {
+        "width_mm": 85,
+        "height_mm": 89,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        }
+      },
+      "one_and_half_column": {
+        "width_mm": 114,
+        "status": "official_requirement"
+      },
+      "double_column": {
+        "width_mm": 174,
+        "height_mm": 120,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        }
+      },
+      "max_height_mm": {
+        "value": 200,
+        "status": "recommended_default",
+        "notes": "Same Cell Press recommendation: about 165 × 200 mm to leave room for the legend."
+      },
+      "font": {
+        "family": "Arial",
+        "family_alternatives": ["Arial"],
+        "axis_text": 7,
+        "axis_title": 8,
+        "legend": 7,
+        "panel_label": 8,
+        "status": {
+          "family": "official_requirement",
+          "axis_text": "official_requirement",
+          "axis_title": "official_requirement",
+          "legend": "recommended_default",
+          "panel_label": "recommended_default"
+        },
+        "notes": "Text about 6–8 pt at print size; Arial; capital panel letters."
+      },
+      "line": {
+        "main": 0.5,
+        "axis": 0.5,
+        "min": 0.5,
+        "max": 1.5,
+        "status": {
+          "main": "official_requirement",
+          "min": "official_requirement",
+          "max": "official_requirement",
+          "axis": "recommended_default"
+        }
+      },
+      "output": {
+        "dpi": 600,
+        "dpi_color_min": 300,
+        "dpi_bw_min": 500,
+        "dpi_line_art_min": 1000,
+        "preferred": ["tiff", "pdf"],
+        "status": {
+          "dpi": "recommended_default",
+          "dpi_color_min": "official_requirement",
+          "dpi_bw_min": "official_requirement",
+          "dpi_line_art_min": "official_requirement",
+          "preferred": "official_requirement"
+        }
+      },
+      "margin": {
+        "top_mm": 2,
+        "right_mm": 2,
+        "bottom_mm": 2,
+        "left_mm": 2,
+        "status": "recommended_default"
+      },
+      "theme": {
+        "background": "white",
+        "grid": "none",
+        "border": "none",
+        "status": "recommended_default"
+      },
+      "spec_defaults": {
+        "journal_style": "Cancer Cell",
+        "size": {
+          "column": "single",
+          "width_mm": 85,
+          "height_mm": 89,
+          "dpi": 600
+        },
+        "font": {
+          "font_family": "Arial",
+          "axis_text_size": 7,
+          "axis_title_size": 8,
+          "legend_size": 7,
+          "title_size": 8
+        },
+        "theme": {
+          "background": "white",
+          "grid": "none",
+          "border": "none"
+        },
+        "geometry": {
+          "point_size": 1.5,
+          "line_width": 0.5,
+          "alpha": 0.7
+        },
+        "output": {
+          "pdf": true,
+          "svg": true,
+          "png": true
+        }
+      }
+    },
+    "Microbiome": {
+      "display_name": "Microbiome",
+      "publisher": "BMC / Springer Nature",
+      "family": "BMC",
+      "sources": [
+        {
+          "title": "BMC preparing-your-manuscript (standard figure dimensions used across BMC journals, including Microbiome)",
+          "url": "https://microbiomejournal.biomedcentral.com/submission-guidelines/preparing-your-manuscript"
+        }
+      ],
+      "single_column": {
+        "width_mm": 85,
+        "height_mm": 89,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "BMC PDF: 85 mm for half-page width figures.",
+          "height_mm": "BMC specifies a maximum height of 225 mm for figure plus legend, not a default height."
+        }
+      },
+      "double_column": {
+        "width_mm": 170,
+        "height_mm": 120,
+        "status": {
+          "width_mm": "official_requirement",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "BMC PDF: 170 mm for full-page width figures."
+        }
+      },
+      "max_height_mm": {
+        "value": 225,
+        "status": "official_requirement",
+        "notes": "Maximum height of 225 mm for figure and legend."
+      },
+      "font": {
+        "family": "Arial",
+        "family_alternatives": ["Arial", "Helvetica"],
+        "axis_text": 7,
+        "axis_title": 8,
+        "legend": 7,
+        "panel_label": 8,
+        "status": "recommended_default",
+        "notes": "BMC requires text to remain legible at 85/170 mm and fonts to be embedded. It does not publish a numeric point-size table. 7–8 pt is a print-legibility default, not an official BMC point size."
+      },
+      "line": {
+        "main": 0.5,
+        "axis": 0.5,
+        "min": 0.25,
+        "status": {
+          "main": "recommended_default",
+          "axis": "recommended_default",
+          "min": "official_requirement"
+        },
+        "notes": "All lines should be wider than 0.25 pt at standard figure widths. 0.5 pt is the recommended default."
+      },
+      "output": {
+        "dpi": 300,
+        "dpi_min": 300,
+        "preferred": ["pdf", "tiff", "eps"],
+        "status": {
+          "dpi": "official_requirement",
+          "dpi_min": "official_requirement",
+          "preferred": "recommended_default"
+        },
+        "notes": {
+          "dpi": "BMC: image resolution of approximately 300 dpi at final size. Web figures also have 600/1200 px width variants; that is a web rule, not a print dpi rule."
+        }
+      },
+      "margin": {
+        "top_mm": 2,
+        "right_mm": 2,
+        "bottom_mm": 2,
+        "left_mm": 2,
+        "status": "recommended_default"
+      },
+      "theme": {
+        "background": "white",
+        "grid": "none",
+        "border": "none",
+        "status": "recommended_default"
+      },
+      "spec_defaults": {
+        "journal_style": "Microbiome",
+        "size": {
+          "column": "single",
+          "width_mm": 85,
+          "height_mm": 89,
+          "dpi": 300
+        },
+        "font": {
+          "font_family": "Arial",
+          "axis_text_size": 7,
+          "axis_title_size": 8,
+          "legend_size": 7,
+          "title_size": 8
+        },
+        "theme": {
+          "background": "white",
+          "grid": "none",
+          "border": "none"
+        },
+        "geometry": {
+          "point_size": 1.5,
+          "line_width": 0.5,
+          "alpha": 0.7
+        },
+        "output": {
+          "pdf": true,
+          "svg": true,
+          "png": true
+        }
+      }
+    },
+    "mSystems": {
+      "display_name": "mSystems",
+      "publisher": "American Society for Microbiology",
+      "family": "ASM",
+      "sources": [
+        {
+          "title": "ASM writing your paper (figures and tables)",
+          "url": "https://journals.asm.org/writing-your-paper"
+        }
+      ],
+      "single_column": {
+        "width_mm": 86,
+        "height_mm": 89,
+        "status": {
+          "width_mm": "recommended_default",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "ASM does not publish a 89/183 mm column table for mSystems. Online production commonly uses ~3.4 in (~86 mm) as one column. Do not label this as an official mSystems width.",
+          "height_mm": "Not specified."
+        }
+      },
+      "double_column": {
+        "width_mm": 178,
+        "height_mm": 120,
+        "status": {
+          "width_mm": "recommended_default",
+          "height_mm": "recommended_default"
+        },
+        "notes": {
+          "width_mm": "Approximately 7 in, matching ASM's recommended maximum figure width of 7 × 9 in. Not an official two-column millimetre rule."
+        }
+      },
+      "max_height_mm": {
+        "value": 229,
+        "status": "recommended_default",
+        "notes": "ASM recommended maximum dimensions are 7 × 9 inches (about 178 × 229 mm). This is a file-size/quality recommendation, not a typeset column rule."
+      },
+      "font": {
+        "family": "Arial",
+        "family_alternatives": ["Arial", "Helvetica", "Times New Roman"],
+        "axis_text": 8,
+        "axis_title": 8,
+        "legend": 8,
+        "panel_label": 9,
+        "status": "recommended_default",
+        "notes": {
+          "family": "ASM recommended fonts: Arial, Helvetica, Times New Roman.",
+          "axis_text": "ASM's 'no smaller than 12 points' sentence sits in the general manuscript-clarity section, not in a figure point-size table. Applying 12 pt inside a 86 mm volcano plot would be unusually large. SCIPlot therefore uses 8 pt as a recommended figure default, not 12 pt, and does not mark it official."
+        }
+      },
+      "line": {
+        "main": 0.5,
+        "axis": 0.5,
+        "min": 0.5,
+        "status": "recommended_default",
+        "notes": "ASM asks for sufficient contrast and intended publication size; it does not give a numeric stroke width. 0.5 pt is a recommended default."
+      },
+      "output": {
+        "dpi": 300,
+        "dpi_min": 300,
+        "dpi_max": 600,
+        "preferred": ["tiff", "pdf"],
+        "status": {
+          "dpi": "official_requirement",
+          "dpi_min": "official_requirement",
+          "dpi_max": "official_requirement",
+          "preferred": "recommended_default"
+        },
+        "notes": "Use 300–600 dpi for color, grayscale, combined, or line art. 300 dpi is sufficient in nearly all cases; do not exceed 600 dpi. Submit at intended publication size. RGB preferred. Individual files ≤15 MB initial / ≤20 MB revision."
+      },
+      "margin": {
+        "top_mm": 2,
+        "right_mm": 2,
+        "bottom_mm": 2,
+        "left_mm": 2,
+        "status": "recommended_default"
+      },
+      "theme": {
+        "background": "white",
+        "grid": "none",
+        "border": "none",
+        "status": "recommended_default"
+      },
+      "spec_defaults": {
+        "journal_style": "mSystems",
+        "size": {
+          "column": "single",
+          "width_mm": 86,
+          "height_mm": 89,
+          "dpi": 300
+        },
+        "font": {
+          "font_family": "Arial",
+          "axis_text_size": 8,
+          "axis_title_size": 8,
+          "legend_size": 8,
+          "title_size": 8
+        },
+        "theme": {
+          "background": "white",
+          "grid": "none",
+          "border": "none"
+        },
+        "geometry": {
+          "point_size": 1.5,
+          "line_width": 0.5,
+          "alpha": 0.7
+        },
+        "output": {
+          "pdf": true,
+          "svg": true,
+          "png": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "id": "clinical.Kaplan_Meier",
+  "name": "Kaplan–Meier survival curve",
+  "category": "clinical",
+  "scientific_questions": [
+    "Do survival probabilities differ between groups over time?"
+  ],
+  "typical_data_contexts": [
+    "TCGA",
+    "clinical cohort"
+  ],
+  "data_schema_id": "survival_table",
+  "required_fields": [
+    {
+      "role": "time",
+      "type": "numeric"
+    },
+    {
+      "role": "status",
+      "type": "binary"
+    },
+    {
+      "role": "group",
+      "type": "categorical"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "survival",
+    "survminer",
+    "ggplot2"
+  ],
+  "statistical_parameters": [
+    {
+      "name": "conf_int",
+      "default": true
+    },
+    {
+      "name": "pval_method",
+      "default": "logrank"
+    }
+  ],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [
+    "clinical.ROC",
+    "clinical.Cox_forest"
+  ],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "survminer",
+      "url": "https://cran.r-project.org/package=survminer",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "KM",
+    "Kaplan-Meier",
+    "生存曲线",
+    "survminer"
+  ],
+  "user_intent_examples": [
+    "比较高低风险组生存"
+  ],
+  "negative_intents": [
+    "画差异火山图"
+  ],
+  "capability_level": "core",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

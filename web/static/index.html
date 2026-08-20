@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCIPlot AI Demo</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #1f2933;
+        background: #f4f6f8;
+      }
+      .page { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+      h1 { margin: 0 0 8px; font-size: 28px; }
+      .sub { color: #52606d; margin-bottom: 24px; }
+      .panel {
+        background: #fff;
+        border: 1px solid #d9e2ec;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+      label { display: block; font-weight: 600; margin-bottom: 8px; }
+      textarea, input[type="file"] { width: 100%; margin-bottom: 16px; }
+      textarea {
+        min-height: 88px;
+        padding: 10px;
+        border: 1px solid #bcccdc;
+        border-radius: 6px;
+        font: inherit;
+      }
+      button {
+        background: #0b6e4f;
+        color: #fff;
+        border: 0;
+        border-radius: 6px;
+        padding: 10px 18px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-right: 8px;
+      }
+      button.secondary { background: #486581; }
+      button:disabled { opacity: 0.6; cursor: not-allowed; }
+      .status { margin-top: 12px; color: #334e68; }
+      .versions { color: #52606d; margin: 8px 0 12px; }
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: #f0f4f8;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        max-height: 320px;
+        overflow: auto;
+      }
+      .downloads { display: flex; flex-wrap: wrap; gap: 8px; }
+      .downloads a {
+        color: #0b6e4f;
+        background: #effcf6;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        border: 1px solid #8ee1b8;
+      }
+      img.preview { max-width: 100%; border: 1px solid #d9e2ec; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <h1>SCIPlot AI Demo</h1>
+      <p class="sub">自然语言需求 → 结构化 Intent（LLM 只解析类型与列名）→ 规则引擎生成 ggplot2 → QC。当前可出图：火山图、散点图、箱线图。请上传 CSV/TSV。</p>
+      <section class="panel">
+        <label for="prompt">绘图需求</label>
+        <textarea id="prompt">帮我生成Nature风格RNA-seq火山图</textarea>
+        <label for="file">数据文件（CSV / TSV）</label>
+        <input id="file" type="file" accept=".csv,.tsv,text/csv" />
+        <button id="generate" type="button">Generate</button>
+        <div class="status" id="status"></div>
+      </section>
+      <section class="panel" id="preview-panel" hidden>
+        <h2>Figure 预览</h2>
+        <img class="preview" id="preview" alt="volcano preview" />
+      </section>
+      <section class="panel" id="refine-panel" hidden>
+        <h2>Figure Refinement</h2>
+        <div class="versions" id="versions">修改前: — · 修改后: —</div>
+        <label for="refine">告诉 AI 你想如何修改图片（版式参数 + 科学修改，如纵轴 -log10）</label>
+        <textarea id="refine" placeholder="例如：字体大一点 / 点改成蓝色 / 纵轴改成 -log10(neg|p-value) / 改成Nature单栏"></textarea>
+        <button id="regenerate" type="button">Regenerate Figure</button>
+        <button id="undo" class="secondary" type="button">Undo</button>
+        <button id="redo" class="secondary" type="button">Redo</button>
+        <pre id="mods">尚无修改记录</pre>
+      </section>
+      <section class="panel">
+        <h2>Figure Specification</h2>
+        <pre id="spec">等待生成…</pre>
+      </section>
+      <section class="panel">
+        <h2>Generated R Code</h2>
+        <pre id="rscript">等待生成…</pre>
+      </section>
+      <section class="panel">
+        <h2>QC Report</h2>
+        <pre id="qc">等待生成…</pre>
+      </section>
+      <section class="panel">
+        <h2>下载</h2>
+        <div class="downloads" id="downloads"></div>
+      </section>
+    </main>
+    <script>
+      const statusEl = document.querySelector("#status");
+      const specEl = document.querySelector("#spec");
+      const rEl = document.querySelector("#rscript");
+      const qcEl = document.querySelector("#qc");
+      const downloadsEl = document.querySelector("#downloads");
+      const previewPanel = document.querySelector("#preview-panel");
+      const refinePanel = document.querySelector("#refine-panel");
+      const preview = document.querySelector("#preview");
+      const versionsEl = document.querySelector("#versions");
+      const modsEl = document.querySelector("#mods");
+      const button = document.querySelector("#generate");
+      const regenerate = document.querySelector("#regenerate");
+      const undoBtn = document.querySelector("#undo");
+      const redoBtn = document.querySelector("#redo");
+      let currentTaskId = null;
+
+      button.addEventListener("click", onGenerate);
+      regenerate.addEventListener("click", function () { onRefine("refine"); });
+      undoBtn.addEventListener("click", function () { onRefine("undo"); });
+      redoBtn.addEventListener("click", function () { onRefine("redo"); });
+
+      async function onGenerate() {
+        const prompt = document.querySelector("#prompt").value.trim();
+        const file = document.querySelector("#file").files[0];
+        if (!file) {
+          statusEl.textContent = "请先上传 CSV/TSV。";
+          return;
+        }
+        button.disabled = true;
+        statusEl.textContent = "正在提交任务…";
+        const body = new FormData();
+        body.append("prompt", prompt);
+        body.append("file", file);
+        try {
+          const created = await fetch("/api/figure/generate", { method: "POST", body }).then((r) => r.json());
+          if (!created.task_id) {
+            statusEl.textContent = created.message || "提交失败";
+            return;
+          }
+          currentTaskId = created.task_id;
+          await poll(created.task_id);
+        } catch (err) {
+          statusEl.textContent = String(err);
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      async function onRefine(action) {
+        if (!currentTaskId) {
+          statusEl.textContent = "请先生成 Figure。";
+          return;
+        }
+        const request = document.querySelector("#refine").value.trim();
+        if (action === "refine" && !request) {
+          statusEl.textContent = "请输入修改说明。";
+          return;
+        }
+        regenerate.disabled = true;
+        undoBtn.disabled = true;
+        redoBtn.disabled = true;
+        statusEl.textContent = "正在根据反馈更新 Figure…";
+        try {
+          const created = await fetch("/api/figure/refine/" + currentTaskId, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ request: request, action: action }),
+          }).then((r) => r.json());
+          if (!created.task_id) {
+            statusEl.textContent = created.message || "提交失败";
+            return;
+          }
+          await poll(created.task_id);
+        } catch (err) {
+          statusEl.textContent = String(err);
+        } finally {
+          regenerate.disabled = false;
+          undoBtn.disabled = false;
+          redoBtn.disabled = false;
+        }
+      }
+
+      async function poll(taskId) {
+        for (let i = 0; i < 180; i += 1) {
+          const data = await fetch("/api/figure/result/" + taskId).then((r) => r.json());
+          statusEl.textContent = "任务 " + taskId + "：" + data.status + (data.message ? " — " + data.message : "");
+          if (data.status && data.status !== "running") {
+            render(taskId, data);
+            return;
+          }
+          await new Promise((resolve) => setTimeout(resolve, 700));
+        }
+        statusEl.textContent = "等待超时。请查看 python run.py 窗口中的报错。";
+      }
+
+      function render(taskId, data) {
+        currentTaskId = taskId;
+        specEl.textContent = data.spec ? JSON.stringify(data.spec, null, 2) : data.message || "无 Spec";
+        qcEl.textContent = data.qc_report ? JSON.stringify(data.qc_report, null, 2) : "无 QC 报告";
+        if (data.questions && data.questions.length) {
+          specEl.textContent =
+            "Required information missing\n\n" +
+            data.questions.map((q) => "- " + q).join("\n") +
+            "\n\n" +
+            specEl.textContent;
+        }
+        if (data.log) {
+          qcEl.textContent += "\n\n--- execution log ---\n" + data.log;
+        }
+        const prev = data.previous_version || 1;
+        const curr = data.current_version || 1;
+        versionsEl.textContent = "修改前: Version " + prev + "    修改后: Version " + curr;
+        if (data.modifications && data.modifications.length) {
+          modsEl.textContent = JSON.stringify(data.modifications, null, 2);
+        } else if (data.history) {
+          modsEl.textContent = JSON.stringify(data.history, null, 2);
+        } else {
+          modsEl.textContent = "尚无修改记录";
+        }
+        const successLike = data.status === "success" || data.status === "unmatched";
+        refinePanel.hidden = !(data.spec && (data.status === "success" || data.history));
+        const files = data.figure_files || [];
+        const labels = { pdf: "PDF", svg: "SVG", png: "PNG", R: "R script", json: "JSON" };
+        const preferred = files.filter(function (name) {
+          return /\.(pdf|svg|png|R|json)$/i.test(name);
+        });
+        downloadsEl.innerHTML = preferred.map(function (name) {
+          const ext = name.split(".").pop();
+          const label = name + (labels[ext] ? " (" + labels[ext] + ")" : "");
+          return '<a href="/api/figure/download/' + taskId + "/" + name + '" target="_blank" rel="noreferrer">' + label + "</a>";
+        }).join("");
+        loadR(taskId, files);
+        const png = files.find(function (name) { return name.toLowerCase().endsWith(".png"); });
+        if (png) {
+          previewPanel.hidden = false;
+          preview.src = "/api/figure/download/" + taskId + "/" + png + "?t=" + Date.now();
+        } else {
+          previewPanel.hidden = true;
+        }
+        if (!successLike && data.status === "need_information") {
+          refinePanel.hidden = true;
+        }
+      }
+
+      async function loadR(taskId, files) {
+        const candidates = (files || []).filter(function (name) {
+          return name.toLowerCase().endsWith(".r");
+        });
+        const ordered = candidates.concat(["figure.R", "volcano.R", "scatter.R", "boxplot.R"]);
+        for (const name of ordered) {
+          try {
+            const res = await fetch("/api/figure/download/" + taskId + "/" + name);
+            if (!res.ok) continue;
+            rEl.textContent = await res.text();
+            return;
+          } catch (err) {}
+        }
+        rEl.textContent = "尚未生成 R 脚本。";
+      }
+    </script>
+  </body>
+</html>

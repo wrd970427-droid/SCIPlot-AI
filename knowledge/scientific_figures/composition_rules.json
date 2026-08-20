@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1.0",
+  "compositions": [
+    {
+      "composition_id": "rna_seq_differential_standard",
+      "scientific_goal": "Present differential transcriptomic changes",
+      "recommended_panels": [
+        "transcriptomics.volcano",
+        "transcriptomics.DEG_heatmap",
+        "enrichment.GSEA_running_score"
+      ]
+    },
+    {
+      "composition_id": "prognostic_model_standard",
+      "scientific_goal": "Present prognostic model performance",
+      "recommended_panels": [
+        "clinical.Kaplan_Meier",
+        "clinical.time_dependent_ROC",
+        "clinical.Cox_forest",
+        "clinical.nomogram"
+      ]
+    },
+    {
+      "composition_id": "single_cell_annotation_standard",
+      "scientific_goal": "Present cell identity annotation evidence",
+      "recommended_panels": [
+        "single_cell.UMAP",
+        "single_cell.DotPlot",
+        "single_cell.Violin_sc"
+      ]
+    },
+    {
+      "composition_id": "mutation_landscape_standard",
+      "scientific_goal": "Present somatic alteration landscape",
+      "recommended_panels": [
+        "mutation_genomics.oncoplot",
+        "mutation_genomics.TMB",
+        "mutation_genomics.mutation_frequency"
+      ]
+    },
+    {
+      "composition_id": "microbiome_ecology_standard",
+      "scientific_goal": "Present community composition and diversity",
+      "recommended_panels": [
+        "microbiome.abundance_bar",
+        "microbiome.alpha_diversity",
+        "microbiome.beta_PCoA"
+      ]
+    },
+    {
+      "composition_id": "enrichment_suite",
+      "scientific_goal": "Present ORA/GSEA functional interpretation",
+      "recommended_panels": [
+        "enrichment.ORA_dotplot",
+        "enrichment.GSEA_running_score",
+        "enrichment.enrichment_emap"
+      ]
+    },
+    {
+      "composition_id": "diagnostic_biomarker",
+      "scientific_goal": "Present diagnostic marker performance",
+      "recommended_panels": [
+        "clinical.ROC",
+        "clinical.calibration",
+        "clinical.decision_curve"
+      ]
+    },
+    {
+      "composition_id": "comparative_genome_suite",
+      "scientific_goal": "Present phylogeny with gene content",
+      "recommended_panels": [
+        "comparative_genomics.phylogenetic_tree",
+        "comparative_genomics.tree_heatmap",
+        "comparative_genomics.gene_presence_absence"
+      ]
+    }
+  ]
+}

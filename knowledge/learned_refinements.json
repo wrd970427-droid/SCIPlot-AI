@@ -1,0 +1,336 @@
+{
+  "schema_version": "0.1.0",
+  "description": "User-corrected refinement examples. Appended by RuleLearner; never contains patient data.",
+  "examples": [
+    {
+      "id": "seed_thicken_axis_not_panel",
+      "utterance": "加粗边框，不是改成全边框",
+      "utterance_aliases": [
+        "边框加粗不要全边框",
+        "加粗轴线不是四周框",
+        "把轴线加粗，不要变成方框"
+      ],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "increase",
+          "value": 0.3,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [
+        "panel_border=full"
+      ],
+      "source": "user_correction",
+      "note": "ggplot2: thicken axis.line via geometry.line_width; do not enable panel.border"
+    },
+    {
+      "id": "seed_outer_thick_inner_thin",
+      "utterance": "只加粗外边框，图内部的虚线变细",
+      "utterance_aliases": [
+        "只加粗外边框，但是不要加粗图内部的虚线",
+        "外边框加粗虚线变细",
+        "轴线加粗，阈值虚线变细"
+      ],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "increase",
+          "value": 0.3,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "threshold_line_width",
+          "operation": "decrease",
+          "value": 0.15,
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "axis.line thicker; geom_hline/vline thinner via separate Spec fields"
+    },
+    {
+      "id": "learned_4f36664a",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-19T06:55:10Z"
+    },
+    {
+      "id": "learned_c168b504",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-19T07:10:22Z"
+    },
+    {
+      "id": "learned_6c4b502c",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-19T07:25:51Z"
+    },
+    {
+      "id": "learned_b4a5026a",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-19T07:37:00Z"
+    },
+    {
+      "id": "learned_b5d9b56e",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-19T07:56:06Z"
+    },
+    {
+      "id": "learned_c1706cc3",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-20T01:00:43Z"
+    },
+    {
+      "id": "learned_ed79b6ab",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-20T01:08:24Z"
+    },
+    {
+      "id": "learned_afedf772",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-20T01:08:35Z"
+    },
+    {
+      "id": "learned_bc03db15",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-20T01:25:51Z"
+    },
+    {
+      "id": "learned_91a396a5",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-20T01:30:40Z"
+    },
+    {
+      "id": "learned_d7e628e0",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-20T01:49:45Z"
+    },
+    {
+      "id": "learned_b8cf6f5f",
+      "utterance": "把轴线加粗，不要变成方框",
+      "utterance_aliases": [],
+      "operations": [
+        {
+          "parameter": "line_width",
+          "operation": "set",
+          "value": 0.8,
+          "confidence": 0.98
+        },
+        {
+          "parameter": "panel_border",
+          "operation": "set",
+          "value": "none",
+          "confidence": 0.98
+        }
+      ],
+      "forbidden": [],
+      "source": "user_correction",
+      "note": "auto from learned",
+      "created_at": "2026-08-20T01:50:42Z"
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "schema_version": "0.1.0",
+  "packages": [
+    {
+      "package": "ggplot2",
+      "domain": [
+        "visualization"
+      ],
+      "figure_types": [
+        "basic_statistics.boxplot",
+        "basic_statistics.violin",
+        "basic_statistics.scatter",
+        "basic_statistics.barplot",
+        "basic_statistics.histogram",
+        "basic_statistics.density",
+        "basic_statistics.beeswarm",
+        "basic_statistics.ridge",
+        "basic_statistics.bland_altman",
+        "basic_statistics.correlation_heatmap",
+        "transcriptomics.volcano",
+        "transcriptomics.MA_plot",
+        "transcriptomics.expression_boxplot",
+        "transcriptomics.expression_violin",
+        "transcriptomics.PCA",
+        "transcriptomics.sample_correlation",
+        "transcriptomics.expression_profile",
+        "transcriptomics.multi_volcano",
+        "enrichment.ORA_dotplot",
+        "enrichment.ORA_barplot",
+        "clinical.Kaplan_Meier",
+        "clinical.Cox_forest",
+        "clinical.ROC",
+        "clinical.time_dependent_ROC",
+        "clinical.calibration",
+        "clinical.decision_curve",
+        "clinical.competing_risk",
+        "clinical.swimmer",
+        "clinical.risk_score",
+        "machine_learning.confusion_matrix",
+        "machine_learning.feature_importance",
+        "machine_learning.lasso_path",
+        "machine_learning.ROC_multi_model",
+        "machine_learning.learning_curve",
+        "single_cell.UMAP",
+        "single_cell.tSNE",
+        "single_cell.DotPlot",
+        "single_cell.Violin_sc",
+        "single_cell.cell_proportion",
+        "single_cell.pseudotime",
+        "single_cell.trajectory",
+        "single_cell.composition_plot",
+        "spatial_omics.spatial_feature",
+        "spatial_omics.spatial_clusters",
+        "mutation_genomics.mutation_frequency",
+        "mutation_genomics.lollipop",
+        "mutation_genomics.cooccurrence",
+        "mutation_genomics.CNV_plot",
+        "mutation_genomics.TMB",
+        "genomics.genomic_track",
+        "genomics.manhattan",
+        "comparative_genomics.gene_presence_absence",
+        "comparative_genomics.synteny",
+        "comparative_genomics.gene_neighborhood",
+        "comparative_genomics.plasmid_map",
+        "microbiome.abundance_bar",
+        "microbiome.alpha_diversity",
+        "microbiome.beta_PCoA",
+        "microbiome.taxa_heatmap",
+        "network.network",
+        "network.Sankey",
+        "network.alluvial",
+        "network.arc_diagram",
+        "cell_communication.ligand_receptor_bubble",
+        "time_series.time_course_line",
+        "time_series.STEM_heatmap"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": true,
+      "source": "https://ggplot2.tidyverse.org/"
+    },
+    {
+      "package": "ggrepel",
+      "domain": [
+        "visualization",
+        "transcriptomics"
+      ],
+      "figure_types": [
+        "transcriptomics.volcano",
+        "transcriptomics.multi_volcano"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": true,
+      "source": "https://cran.r-project.org/package=ggrepel"
+    },
+    {
+      "package": "ggpubr",
+      "domain": [
+        "visualization",
+        "statistics"
+      ],
+      "figure_types": [
+        "basic_statistics.boxplot",
+        "basic_statistics.violin",
+        "basic_statistics.scatter",
+        "transcriptomics.expression_boxplot",
+        "microbiome.alpha_diversity"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=ggpubr"
+    },
+    {
+      "package": "ggdist",
+      "domain": [
+        "visualization",
+        "uncertainty"
+      ],
+      "figure_types": [],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=ggdist"
+    },
+    {
+      "package": "ggridges",
+      "domain": [
+        "visualization"
+      ],
+      "figure_types": [
+        "basic_statistics.density",
+        "basic_statistics.ridge",
+        "enrichment.GSEA_ridge"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=ggridges"
+    },
+    {
+      "package": "ggbeeswarm",
+      "domain": [
+        "visualization"
+      ],
+      "figure_types": [
+        "basic_statistics.beeswarm"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=ggbeeswarm"
+    },
+    {
+      "package": "ComplexHeatmap",
+      "domain": [
+        "heatmap",
+        "mutation_genomics"
+      ],
+      "figure_types": [
+        "basic_statistics.correlation_heatmap",
+        "transcriptomics.DEG_heatmap",
+        "transcriptomics.sample_correlation",
+        "single_cell.marker_heatmap",
+        "mutation_genomics.oncoplot",
+        "mutation_genomics.CNV_plot",
+        "comparative_genomics.gene_presence_absence",
+        "microbiome.taxa_heatmap",
+        "multiomics.multiomics_heatmap",
+        "time_series.STEM_heatmap"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/ComplexHeatmap/"
+    },
+    {
+      "package": "circlize",
+      "domain": [
+        "circos",
+        "network"
+      ],
+      "figure_types": [
+        "transcriptomics.DEG_heatmap",
+        "genomics.circos_genome",
+        "comparative_genomics.plasmid_map",
+        "network.chord",
+        "cell_communication.cellchat_circle"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=circlize"
+    },
+    {
+      "package": "clusterProfiler",
+      "domain": [
+        "enrichment"
+      ],
+      "figure_types": [
+        "enrichment.ORA_dotplot",
+        "enrichment.ORA_barplot",
+        "enrichment.GSEA_running_score"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/clusterProfiler/"
+    },
+    {
+      "package": "enrichplot",
+      "domain": [
+        "enrichment"
+      ],
+      "figure_types": [
+        "enrichment.ORA_dotplot",
+        "enrichment.ORA_barplot",
+        "enrichment.GSEA_running_score",
+        "enrichment.GSEA_ridge",
+        "enrichment.enrichment_emap",
+        "enrichment.enrichment_cnet",
+        "enrichment.GO_hierarchy"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/enrichplot/"
+    },
+    {
+      "package": "survival",
+      "domain": [
+        "clinical"
+      ],
+      "figure_types": [
+        "clinical.Kaplan_Meier",
+        "clinical.Cox_forest",
+        "clinical.time_dependent_ROC",
+        "clinical.nomogram"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=survival"
+    },
+    {
+      "package": "survminer",
+      "domain": [
+        "clinical"
+      ],
+      "figure_types": [
+        "clinical.Kaplan_Meier",
+        "clinical.risk_score"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=survminer"
+    },
+    {
+      "package": "timeROC",
+      "domain": [
+        "clinical"
+      ],
+      "figure_types": [
+        "clinical.time_dependent_ROC"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=timeROC"
+    },
+    {
+      "package": "pROC",
+      "domain": [
+        "clinical",
+        "machine_learning"
+      ],
+      "figure_types": [
+        "clinical.ROC",
+        "machine_learning.ROC_multi_model"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=pROC"
+    },
+    {
+      "package": "rmda",
+      "domain": [
+        "clinical"
+      ],
+      "figure_types": [
+        "clinical.decision_curve"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=rmda"
+    },
+    {
+      "package": "rms",
+      "domain": [
+        "clinical"
+      ],
+      "figure_types": [
+        "clinical.calibration",
+        "clinical.nomogram"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=rms"
+    },
+    {
+      "package": "Seurat",
+      "domain": [
+        "single_cell",
+        "spatial_omics"
+      ],
+      "figure_types": [
+        "single_cell.UMAP",
+        "single_cell.tSNE",
+        "single_cell.FeaturePlot",
+        "single_cell.DotPlot",
+        "single_cell.Violin_sc",
+        "single_cell.marker_heatmap",
+        "single_cell.pseudotime",
+        "spatial_omics.spatial_feature",
+        "spatial_omics.spatial_clusters"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://satijalab.org/seurat/"
+    },
+    {
+      "package": "patchwork",
+      "domain": [
+        "composition"
+      ],
+      "figure_types": [
+        "transcriptomics.multi_volcano"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": true,
+      "source": "https://cran.r-project.org/package=patchwork"
+    },
+    {
+      "package": "maftools",
+      "domain": [
+        "mutation_genomics"
+      ],
+      "figure_types": [
+        "mutation_genomics.oncoplot",
+        "mutation_genomics.mutation_frequency",
+        "mutation_genomics.lollipop",
+        "mutation_genomics.TiTv",
+        "mutation_genomics.cooccurrence",
+        "mutation_genomics.mutual_exclusivity",
+        "mutation_genomics.TMB"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/maftools/"
+    },
+    {
+      "package": "ggtree",
+      "domain": [
+        "comparative_genomics"
+      ],
+      "figure_types": [
+        "comparative_genomics.phylogenetic_tree",
+        "comparative_genomics.tree_metadata",
+        "comparative_genomics.tree_heatmap"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/ggtree/"
+    },
+    {
+      "package": "ggtreeExtra",
+      "domain": [
+        "comparative_genomics"
+      ],
+      "figure_types": [
+        "comparative_genomics.tree_metadata",
+        "comparative_genomics.tree_heatmap"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/ggtreeExtra/"
+    },
+    {
+      "package": "gggenes",
+      "domain": [
+        "comparative_genomics"
+      ],
+      "figure_types": [
+        "comparative_genomics.gene_neighborhood",
+        "comparative_genomics.plasmid_map"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=gggenes"
+    },
+    {
+      "package": "gggenomes",
+      "domain": [
+        "comparative_genomics"
+      ],
+      "figure_types": [
+        "comparative_genomics.synteny"
+      ],
+      "install_source": "GitHub",
+      "required_for_core": false,
+      "source": "https://github.com/thackl/gggenomes"
+    },
+    {
+      "package": "igraph",
+      "domain": [
+        "network"
+      ],
+      "figure_types": [
+        "enrichment.enrichment_emap",
+        "network.network",
+        "multiomics.correlation_network_multi"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=igraph"
+    },
+    {
+      "package": "ggraph",
+      "domain": [
+        "network"
+      ],
+      "figure_types": [
+        "network.network",
+        "network.arc_diagram",
+        "multiomics.correlation_network_multi"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=ggraph"
+    },
+    {
+      "package": "CellChat",
+      "domain": [
+        "cell_communication"
+      ],
+      "figure_types": [
+        "cell_communication.cellchat_circle",
+        "cell_communication.ligand_receptor_bubble"
+      ],
+      "install_source": "GitHub",
+      "required_for_core": false,
+      "source": "https://github.com/sqjin/CellChat"
+    },
+    {
+      "package": "glmnet",
+      "domain": [
+        "machine_learning"
+      ],
+      "figure_types": [
+        "machine_learning.lasso_path"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=glmnet"
+    },
+    {
+      "package": "vegan",
+      "domain": [
+        "microbiome"
+      ],
+      "figure_types": [
+        "microbiome.beta_PCoA"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=vegan"
+    },
+    {
+      "package": "networkD3",
+      "domain": [
+        "network"
+      ],
+      "figure_types": [
+        "network.Sankey"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=networkD3"
+    },
+    {
+      "package": "ggalluvial",
+      "domain": [
+        "network"
+      ],
+      "figure_types": [
+        "network.alluvial"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=ggalluvial"
+    },
+    {
+      "package": "qqman",
+      "domain": [
+        "genomics"
+      ],
+      "figure_types": [
+        "genomics.manhattan"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=qqman"
+    },
+    {
+      "package": "cmprsk",
+      "domain": [
+        "clinical"
+      ],
+      "figure_types": [
+        "clinical.competing_risk"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=cmprsk"
+    },
+    {
+      "package": "GOSemSim",
+      "domain": [
+        "enrichment"
+      ],
+      "figure_types": [
+        "enrichment.GO_hierarchy"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/GOSemSim/"
+    },
+    {
+      "package": "slingshot",
+      "domain": [
+        "single_cell"
+      ],
+      "figure_types": [
+        "single_cell.trajectory"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/slingshot/"
+    },
+    {
+      "package": "ggbio",
+      "domain": [
+        "genomics"
+      ],
+      "figure_types": [
+        "genomics.genomic_track"
+      ],
+      "install_source": "Bioconductor",
+      "required_for_core": false,
+      "source": "https://bioconductor.org/packages/ggbio/"
+    },
+    {
+      "package": "forestplot",
+      "domain": [
+        "clinical"
+      ],
+      "figure_types": [
+        "clinical.Cox_forest"
+      ],
+      "install_source": "CRAN",
+      "required_for_core": false,
+      "source": "https://cran.r-project.org/package=forestplot"
+    }
+  ]
+}

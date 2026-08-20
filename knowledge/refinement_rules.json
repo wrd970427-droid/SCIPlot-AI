@@ -1,0 +1,312 @@
+{
+  "schema_version": "0.1.0",
+  "description": "Natural-language figure design refinements → Spec parameter patches. Analysis parameters are forbidden.",
+  "forbidden_paths": [
+    "figure_type",
+    "plot.data",
+    "plot.statistics",
+    "plot.statistics.log2FC_threshold",
+    "plot.statistics.FDR_threshold",
+    "plot.statistics.significance_metric"
+  ],
+  "palettes": {
+    "Nature": {
+      "up": "#E64B35",
+      "down": "#4DBBD5",
+      "ns": "#B0B0B0"
+    },
+    "Cell": {
+      "up": "#BE1E2D",
+      "down": "#0072B2",
+      "ns": "#BBBBBB"
+    },
+    "Science": {
+      "up": "#D55E00",
+      "down": "#0072B2",
+      "ns": "#999999"
+    }
+  },
+  "rules": [
+    {
+      "id": "font_larger",
+      "keywords": [
+        "字体大",
+        "字体增大",
+        "字体加大",
+        "加大字体",
+        "放大字体",
+        "字号增大",
+        "字号大一点",
+        "文字大一点",
+        "字大一点",
+        "字体大一点",
+        "larger font",
+        "increase font",
+        "bigger font",
+        "enlarge font"
+      ],
+      "parameter": "font_size",
+      "operation": "increase",
+      "value": 2,
+      "confidence": 0.95
+    },
+    {
+      "id": "font_smaller",
+      "keywords": [
+        "字体小",
+        "字体减小",
+        "字体缩小",
+        "缩小字体",
+        "字号减小",
+        "文字小一点",
+        "字小一点",
+        "字体小一点",
+        "smaller font",
+        "decrease font"
+      ],
+      "parameter": "font_size",
+      "operation": "decrease",
+      "value": 1,
+      "confidence": 0.9
+    },
+    {
+      "id": "points_smaller",
+      "keywords": ["点小一点", "点再小", "点小一些", "点减小", "缩小点", "点的大小小一点", "点的大小，小一点", "点的大小小一些", "smaller points", "points smaller"],
+      "parameter": "point_size",
+      "operation": "decrease",
+      "value": 0.5,
+      "confidence": 0.95
+    },
+    {
+      "id": "points_larger",
+      "keywords": ["点大一点", "点大一些", "点增大", "放大点", "点的大小大一点", "点的大小，大一点", "larger points", "points larger"],
+      "parameter": "point_size",
+      "operation": "increase",
+      "value": 0.5,
+      "confidence": 0.95
+    },
+    {
+      "id": "thicken_axis_lines",
+      "keywords": [
+        "加粗边框",
+        "边框加粗",
+        "轴线加粗",
+        "坐标轴加粗",
+        "轴线粗一点",
+        "线粗一点",
+        "加粗轴线",
+        "加粗坐标轴",
+        "加粗外边框",
+        "外边框加粗",
+        "thicken axis",
+        "thicker axis",
+        "thicker lines"
+      ],
+      "parameter": "line_width",
+      "operation": "increase",
+      "value": 0.3,
+      "confidence": 0.95,
+      "ggplot": "theme(axis.line = element_line(linewidth=...)); NOT geom_hline/vline"
+    },
+    {
+      "id": "thin_axis_lines",
+      "keywords": ["轴线细一点", "边框细一点", "thinner axis"],
+      "parameter": "line_width",
+      "operation": "decrease",
+      "value": 0.2,
+      "confidence": 0.9,
+      "ggplot": "theme(axis.line = element_line(linewidth=...))"
+    },
+    {
+      "id": "thin_threshold_lines",
+      "keywords": [
+        "虚线变细",
+        "内部虚线变细",
+        "阈值线变细",
+        "图内部的虚线变细",
+        "参考线变细",
+        "threshold thinner",
+        "dashed thinner"
+      ],
+      "parameter": "threshold_line_width",
+      "operation": "decrease",
+      "value": 0.15,
+      "confidence": 0.95,
+      "ggplot": "geom_hline/geom_vline(linewidth=...)"
+    },
+    {
+      "id": "thicken_threshold_lines",
+      "keywords": ["虚线加粗", "阈值线加粗", "参考线加粗", "threshold thicker"],
+      "parameter": "threshold_line_width",
+      "operation": "increase",
+      "value": 0.15,
+      "confidence": 0.9,
+      "ggplot": "geom_hline/geom_vline(linewidth=...)"
+    },
+    {
+      "id": "outer_thick_inner_thin",
+      "keywords": [
+        "只加粗外边框，图内部的虚线变细",
+        "外边框加粗虚线变细",
+        "轴线加粗虚线变细"
+      ],
+      "parameter": "outer_thick_inner_thin",
+      "operation": "preset",
+      "value": {
+        "geometry.line_width": "+0.3",
+        "geometry.threshold_line_width": "-0.15"
+      },
+      "confidence": 0.98,
+      "ggplot": "axis.line thicker; geom_hline/vline thinner"
+    },
+    {
+      "id": "add_border",
+      "keywords": [
+        "全边框",
+        "四周加边框",
+        "四周加黑色边框",
+        "增加四周边框",
+        "加方框",
+        "改成全边框",
+        "panel border",
+        "boxed panel",
+        "full border"
+      ],
+      "parameter": "panel_border",
+      "operation": "set",
+      "value": "full",
+      "confidence": 0.95,
+      "ggplot": "theme(panel.border = element_rect(fill=NA))"
+    },
+    {
+      "id": "remove_border",
+      "keywords": ["去掉边框", "不要边框", "无边框", "去掉全边框", "不要全边框", "no border", "no panel border"],
+      "parameter": "panel_border",
+      "operation": "set",
+      "value": "none",
+      "confidence": 0.9,
+      "ggplot": "theme(panel.border = element_blank())"
+    },
+    {
+      "id": "show_major_grid",
+      "keywords": ["加网格", "显示网格", "打开网格", "major grid", "show grid"],
+      "parameter": "theme.grid",
+      "operation": "set",
+      "value": "major",
+      "confidence": 0.85
+    },
+    {
+      "id": "hide_grid",
+      "keywords": ["去掉网格", "不要网格", "隐藏网格", "no grid", "hide grid"],
+      "parameter": "theme.grid",
+      "operation": "set",
+      "value": "none",
+      "confidence": 0.85
+    },
+    {
+      "id": "width_wider",
+      "keywords": [
+        "宽一点",
+        "再宽一点",
+        "图宽一点",
+        "图片变宽",
+        "图变宽",
+        "变宽",
+        "加宽",
+        "更宽",
+        "widen",
+        "wider",
+        "make wider"
+      ],
+      "parameter": "width_mm",
+      "operation": "multiply",
+      "value": 1.2,
+      "confidence": 0.85
+    },
+    {
+      "id": "width_narrower",
+      "keywords": [
+        "窄一点",
+        "再窄一点",
+        "图片变窄",
+        "图变窄",
+        "变窄",
+        "更窄",
+        "narrower",
+        "make narrower"
+      ],
+      "parameter": "width_mm",
+      "operation": "multiply",
+      "value": 0.85,
+      "confidence": 0.85
+    },
+    {
+      "id": "nature_single",
+      "keywords": ["改成Nature单栏", "Nature单栏", "nature single column", "Nature single"],
+      "parameter": "nature_single_column",
+      "operation": "preset",
+      "value": {
+        "journal_style": "Nature",
+        "size.column": "single",
+        "size.width_mm": 89
+      },
+      "confidence": 0.98
+    },
+    {
+      "id": "nature_colors",
+      "keywords": ["颜色换成Nature风格", "Nature颜色", "Nature配色", "nature colors", "npg"],
+      "parameter": "colors",
+      "operation": "palette",
+      "value": "Nature",
+      "confidence": 0.9
+    },
+    {
+      "id": "point_color_blue",
+      "keywords": ["点的颜色修改为蓝色", "点颜色改成蓝色", "点改成蓝色", "改成蓝色", "颜色改成蓝色", "点蓝色"],
+      "parameter": "point_color",
+      "operation": "set",
+      "value": "#2E86AB",
+      "confidence": 0.96
+    },
+    {
+      "id": "point_color_red",
+      "keywords": ["点的颜色修改为红色", "点颜色改成红色", "改成红色", "颜色改成红色", "点红色"],
+      "parameter": "point_color",
+      "operation": "set",
+      "value": "#E64B35",
+      "confidence": 0.96
+    },
+    {
+      "id": "point_color_black",
+      "keywords": ["点的颜色修改为黑色", "点颜色改成黑色", "改成黑色", "颜色改成黑色", "点黑色"],
+      "parameter": "point_color",
+      "operation": "set",
+      "value": "#000000",
+      "confidence": 0.95
+    },
+    {
+      "id": "legend_bottom",
+      "keywords": ["图例放下面", "图例在下", "legend bottom", "legend below"],
+      "parameter": "legend_position",
+      "operation": "set",
+      "value": "bottom",
+      "confidence": 0.95
+    },
+    {
+      "id": "legend_right",
+      "keywords": ["图例放右边", "图例在右", "legend right"],
+      "parameter": "legend_position",
+      "operation": "set",
+      "value": "right",
+      "confidence": 0.95
+    },
+    {
+      "id": "legend_top",
+      "keywords": ["图例放上面", "图例在上", "legend top"],
+      "parameter": "legend_position",
+      "operation": "set",
+      "value": "top",
+      "confidence": 0.9
+    }
+  ]
+}

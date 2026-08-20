@@ -1,0 +1,95 @@
+{
+  "id": "clinical.risk_score",
+  "name": "Risk-score distribution / strata plot",
+  "category": "clinical",
+  "scientific_questions": [
+    "How are model risk scores distributed and linked to outcome strata?"
+  ],
+  "typical_data_contexts": [
+    "clinical"
+  ],
+  "data_schema_id": "survival_prediction_table",
+  "required_fields": [
+    {
+      "role": "sample_id",
+      "type": "string"
+    },
+    {
+      "role": "risk_score",
+      "type": "numeric"
+    },
+    {
+      "role": "group",
+      "type": "categorical"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "ggplot2",
+    "survminer"
+  ],
+  "statistical_parameters": [],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2 theme reference",
+      "url": "https://ggplot2.tidyverse.org/reference/theme.html",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "risk score",
+    "风险评分"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "core",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

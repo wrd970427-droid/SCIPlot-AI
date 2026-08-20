@@ -1,0 +1,395 @@
+{
+  "schema_version": "0.1.0",
+  "description": "Natural-language revision intents mapped onto FigureSpecification paths and ggplot2 parameters.",
+  "clamp_notes": [
+    "Publication figures: font sizes must stay >= 6 pt (schema rule) unless purpose=internal.",
+    "Publication figures: line_width must stay >= 0.3.",
+    "Journal overlays from knowledge/journals/journal_styles.json may impose a higher font or line floor."
+  ],
+  "categories": ["size", "theme", "border", "color", "layout"],
+  "palettes": {
+    "nature_palette": {
+      "id": "npg_volcano",
+      "status": "recommended_default",
+      "notes": "Community 'Nature-style' colours (ggsci npg-like). Not a Nature journal house palette.",
+      "volcano": {
+        "up": "#E64B35",
+        "down": "#4DBBD5",
+        "ns": "#B0B0B0"
+      },
+      "categorical": [
+        "#E64B35",
+        "#4DBBD5",
+        "#00A087",
+        "#3C5488",
+        "#F39B7F",
+        "#8491B4",
+        "#91D1C2",
+        "#DC0000",
+        "#7E6148",
+        "#B09C85"
+      ]
+    },
+    "cell_palette": {
+      "id": "cell_high_contrast",
+      "status": "recommended_default",
+      "notes": "High-contrast set for Cell-like figures. Cell Press does not publish an official qualitative palette.",
+      "volcano": {
+        "up": "#BE1E2D",
+        "down": "#0072B2",
+        "ns": "#BBBBBB"
+      }
+    },
+    "science_palette": {
+      "id": "science_print",
+      "status": "recommended_default",
+      "notes": "Not an official Science palette. Conservative print colours.",
+      "volcano": {
+        "up": "#D55E00",
+        "down": "#0072B2",
+        "ns": "#999999"
+      }
+    }
+  },
+  "intents": [
+    {
+      "id": "points_smaller",
+      "category": "size",
+      "utterances": [
+        "点小一点",
+        "点再小一点",
+        "点小一些",
+        "points smaller",
+        "smaller points"
+      ],
+      "patches": [
+        {
+          "parameter": "point_size",
+          "spec_path": "geometry.point_size",
+          "ggplot": { "geom": "geom_point", "arg": "size" },
+          "op": "set",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "points_larger",
+      "category": "size",
+      "utterances": ["点大一点", "点大一些", "points larger", "bigger points"],
+      "patches": [
+        {
+          "parameter": "point_size",
+          "spec_path": "geometry.point_size",
+          "ggplot": { "geom": "geom_point", "arg": "size" },
+          "op": "set",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "lines_thinner",
+      "category": "size",
+      "utterances": ["线条细一点", "线细一点", "thinner lines", "finer lines"],
+      "patches": [
+        {
+          "parameter": "line_width",
+          "spec_path": "geometry.line_width",
+          "ggplot": { "theme_or_geom": "linewidth", "arg": "linewidth" },
+          "op": "set",
+          "value": 0.4,
+          "min": 0.3
+        }
+      ]
+    },
+    {
+      "id": "lines_thicker",
+      "category": "size",
+      "utterances": ["线条粗一点", "线粗一点", "thicker lines"],
+      "patches": [
+        {
+          "parameter": "line_width",
+          "spec_path": "geometry.line_width",
+          "ggplot": { "arg": "linewidth" },
+          "op": "set",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "id": "font_larger",
+      "category": "size",
+      "utterances": ["字体大一点", "字大一点", "larger font", "increase font size"],
+      "patches": [
+        {
+          "parameter": "axis_text_size",
+          "spec_path": "font.axis_text_size",
+          "ggplot": { "theme": "axis.text", "arg": "size" },
+          "op": "add",
+          "value": 2,
+          "min": 5,
+          "max": 12
+        },
+        {
+          "parameter": "axis_title_size",
+          "spec_path": "font.axis_title_size",
+          "ggplot": { "theme": "axis.title", "arg": "size" },
+          "op": "add",
+          "value": 2,
+          "min": 5,
+          "max": 12
+        },
+        {
+          "parameter": "legend_size",
+          "spec_path": "font.legend_size",
+          "ggplot": { "theme": "legend.text", "arg": "size" },
+          "op": "add",
+          "value": 2,
+          "min": 5,
+          "max": 12
+        }
+      ]
+    },
+    {
+      "id": "font_smaller",
+      "category": "size",
+      "utterances": ["字体小一点", "字小一点", "smaller font"],
+      "patches": [
+        {
+          "parameter": "axis_text_size",
+          "spec_path": "font.axis_text_size",
+          "ggplot": { "theme": "axis.text", "arg": "size" },
+          "op": "add",
+          "value": -2,
+          "min": 6,
+          "max": 12
+        },
+        {
+          "parameter": "axis_title_size",
+          "spec_path": "font.axis_title_size",
+          "ggplot": { "theme": "axis.title", "arg": "size" },
+          "op": "add",
+          "value": -2,
+          "min": 6,
+          "max": 12
+        },
+        {
+          "parameter": "legend_size",
+          "spec_path": "font.legend_size",
+          "ggplot": { "theme": "legend.text", "arg": "size" },
+          "op": "add",
+          "value": -2,
+          "min": 6,
+          "max": 12
+        }
+      ]
+    },
+    {
+      "id": "white_background",
+      "category": "theme",
+      "utterances": ["白色背景", "白底", "white background"],
+      "patches": [
+        {
+          "parameter": "background",
+          "spec_path": "theme.background",
+          "ggplot": { "theme": "plot.background / panel.background", "value": "element_rect(fill='white')" },
+          "op": "set",
+          "value": "white"
+        }
+      ],
+      "ggplot_theme": "theme_classic()"
+    },
+    {
+      "id": "theme_classic",
+      "category": "theme",
+      "utterances": ["classic主题", "theme_classic", "去掉灰底", "publication theme"],
+      "patches": [
+        {
+          "parameter": "background",
+          "spec_path": "theme.background",
+          "op": "set",
+          "value": "white"
+        },
+        {
+          "parameter": "grid",
+          "spec_path": "theme.grid",
+          "op": "set",
+          "value": "none"
+        }
+      ],
+      "ggplot_theme": "theme_classic()"
+    },
+    {
+      "id": "no_grid",
+      "category": "theme",
+      "utterances": ["不要网格", "去掉网格", "无网格", "no grid"],
+      "patches": [
+        {
+          "parameter": "grid",
+          "spec_path": "theme.grid",
+          "ggplot": { "theme": "panel.grid", "value": "element_blank()" },
+          "op": "set",
+          "value": "none"
+        }
+      ]
+    },
+    {
+      "id": "show_grid",
+      "category": "theme",
+      "utterances": ["加上网格", "要网格", "show grid"],
+      "patches": [
+        {
+          "parameter": "grid",
+          "spec_path": "theme.grid",
+          "ggplot": { "theme": "panel.grid.major", "value": "element_line()" },
+          "op": "set",
+          "value": "major"
+        }
+      ]
+    },
+    {
+      "id": "add_border",
+      "category": "border",
+      "utterances": ["加边框", "加上边框", "边框明显", "add border", "panel border"],
+      "patches": [
+        {
+          "parameter": "border",
+          "spec_path": "theme.border",
+          "ggplot": { "theme": "panel.border", "value": "element_rect(colour='black', fill=NA, linewidth=0.5)" },
+          "op": "set",
+          "value": "panel"
+        },
+        {
+          "parameter": "line_width",
+          "spec_path": "geometry.line_width",
+          "op": "set",
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "id": "remove_border",
+      "category": "border",
+      "utterances": ["去掉边框", "不要边框", "no border"],
+      "patches": [
+        {
+          "parameter": "border",
+          "spec_path": "theme.border",
+          "ggplot": { "theme": "panel.border", "value": "element_blank()" },
+          "op": "set",
+          "value": "none"
+        }
+      ]
+    },
+    {
+      "id": "nature_colors",
+      "category": "color",
+      "utterances": [
+        "Nature风格",
+        "Nature配色",
+        "改成Nature风格",
+        "nature palette",
+        "Nature colors"
+      ],
+      "patches": [
+        {
+          "parameter": "palette",
+          "spec_path": "plot.colors",
+          "op": "set_palette",
+          "value": "nature_palette"
+        }
+      ]
+    },
+    {
+      "id": "cell_colors",
+      "category": "color",
+      "utterances": ["Cell风格", "Cell配色", "cell palette"],
+      "patches": [
+        {
+          "parameter": "palette",
+          "spec_path": "plot.colors",
+          "op": "set_palette",
+          "value": "cell_palette"
+        }
+      ]
+    },
+    {
+      "id": "up_red_down_blue",
+      "category": "color",
+      "utterances": ["红上调蓝下调", "上调红色下调蓝色"],
+      "patches": [
+        {
+          "parameter": "colors.up",
+          "spec_path": "plot.colors.up",
+          "op": "set",
+          "value": "#E64B35"
+        },
+        {
+          "parameter": "colors.down",
+          "spec_path": "plot.colors.down",
+          "op": "set",
+          "value": "#4DBBD5"
+        }
+      ]
+    },
+    {
+      "id": "single_column",
+      "category": "layout",
+      "utterances": [
+        "适合论文单栏",
+        "单栏",
+        "单栏宽度",
+        "single column",
+        "single-column"
+      ],
+      "patches": [
+        {
+          "parameter": "width_mm",
+          "spec_path": "size.column",
+          "op": "apply_journal_column",
+          "value": "single",
+          "notes": "Do not hard-code 89 mm. Read journals[journal_style].single_column.width_mm."
+        }
+      ]
+    },
+    {
+      "id": "double_column",
+      "category": "layout",
+      "utterances": ["双栏", "适合论文双栏", "double column", "full width"],
+      "patches": [
+        {
+          "parameter": "width_mm",
+          "spec_path": "size.column",
+          "op": "apply_journal_column",
+          "value": "double"
+        }
+      ]
+    },
+    {
+      "id": "wider_figure",
+      "category": "layout",
+      "utterances": ["图宽一点", "再宽一点", "wider", "make it wider"],
+      "patches": [
+        {
+          "parameter": "width_mm",
+          "spec_path": "size.column",
+          "op": "enum_next",
+          "value": ["single", "double"],
+          "notes": "If already double, keep double and ask whether a custom width is needed."
+        }
+      ]
+    },
+    {
+      "id": "narrower_figure",
+      "category": "layout",
+      "utterances": ["图窄一点", "narrower"],
+      "patches": [
+        {
+          "parameter": "width_mm",
+          "spec_path": "size.column",
+          "op": "enum_prev",
+          "value": ["single", "double"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "spec_version": "0.1.0",
+  "figure_type": "volcano",
+  "purpose": "publication",
+  "journal_style": "Nature",
+  "size": {
+    "column": "single",
+    "width_mm": 89,
+    "height_mm": 70,
+    "dpi": 600
+  },
+  "font": {
+    "font_family": "Arial",
+    "axis_text_size": 7,
+    "axis_title_size": 8,
+    "legend_size": 7,
+    "title_size": 8
+  },
+  "theme": {
+    "background": "white",
+    "grid": "none",
+    "border": "none"
+  },
+  "geometry": {
+    "point_size": 1.5,
+    "line_width": 0.5,
+    "threshold_line_width": 0.35,
+    "alpha": 0.7
+  },
+  "output": {
+    "pdf": true,
+    "svg": true,
+    "png": true
+  },
+  "plot": {
+    "figure_type": "volcano",
+    "data": {
+      "source": "examples/example_volcano.csv",
+      "log2fc_column": "log2FoldChange",
+      "significance_column": "padj",
+      "gene_column": "gene"
+    },
+    "statistics": {
+      "log2FC_threshold": 1,
+      "FDR_threshold": 0.05,
+      "significance_metric": "fdr"
+    },
+    "labels": {
+      "enabled": true,
+      "mode": "top_n",
+      "top_n": 10,
+      "genes": []
+    },
+    "colors": {
+      "up": "#E64B35",
+      "down": "#4DBBD5",
+      "ns": "#B0B0B0"
+    }
+  }
+}

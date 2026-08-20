@@ -1,0 +1,303 @@
+{
+  "schema_version": "0.1.0",
+  "metadata": {
+    "type": "volcano",
+    "description": "RNA-seq differential expression volcano plot",
+    "aliases": [
+      "火山图",
+      "volcano plot",
+      "volcano",
+      "RNA-seq volcano",
+      "RNA-seq火山图",
+      "differential expression volcano",
+      "DEG plot",
+      "deg plot"
+    ],
+    "typical_input": "gene-level DE table (DESeq2 / edgeR / limma)",
+    "r_packages": ["ggplot2", "ggrepel"],
+    "spec_figure_type": "volcano"
+  },
+  "required_parameters": [
+    {
+      "id": "data_file",
+      "spec_path": "plot.data.source",
+      "description": "Differential expression table (CSV/TSV)."
+    },
+    {
+      "id": "gene_column",
+      "spec_path": "plot.data.gene_column",
+      "description": "Gene symbol or ID column."
+    },
+    {
+      "id": "log2FC_column",
+      "spec_path": "plot.data.log2fc_column",
+      "description": "log2 fold-change column."
+    },
+    {
+      "id": "pvalue_column",
+      "spec_path": "plot.data.significance_column",
+      "description": "Significance column. May hold raw p-values or adjusted p / FDR; distinguished by significance_metric."
+    }
+  ],
+  "optional_parameters": [
+    {
+      "id": "label_top_genes",
+      "spec_path": "plot.labels",
+      "description": "Label the most significant genes or a user gene list."
+    },
+    {
+      "id": "color_scheme",
+      "spec_path": "plot.colors",
+      "description": "Up / down / not-significant colours."
+    },
+    {
+      "id": "point_size",
+      "spec_path": "geometry.point_size",
+      "description": "geom_point size."
+    },
+    {
+      "id": "alpha",
+      "spec_path": "geometry.alpha",
+      "description": "Point transparency."
+    },
+    {
+      "id": "threshold_line",
+      "spec_path": "plot.statistics",
+      "description": "Dashed lines at |log2FC| and -log10(FDR or p) cutoffs."
+    },
+    {
+      "id": "annotation",
+      "spec_path": "plot.labels.genes",
+      "description": "Extra genes to force-label."
+    },
+    {
+      "id": "purpose",
+      "spec_path": "purpose",
+      "description": "internal vs publication."
+    },
+    {
+      "id": "journal_style",
+      "spec_path": "journal_style",
+      "description": "Journal profile from knowledge/journals/journal_styles.json."
+    },
+    {
+      "id": "output_size",
+      "spec_path": "size.column",
+      "description": "single / double / custom column width."
+    }
+  ],
+  "default_parameters": {
+    "log2FC_threshold": 1,
+    "FDR_threshold": 0.05,
+    "significance_metric": "fdr",
+    "point_size": 1.5,
+    "alpha": 0.7,
+    "line_width": 0.5,
+    "threshold_line_width": 0.35,
+    "label_top_genes": 10,
+    "label_enabled": false,
+    "threshold_line": true,
+    "legend_position": "right",
+    "colors": {
+      "up": "#E64B35",
+      "down": "#4DBBD5",
+      "ns": "#B0B0B0"
+    },
+    "_status": "recommended_default",
+    "_notes": {
+      "log2FC_threshold": "Common RNA-seq display cutoff (|log2FC| >= 1), not a journal rule.",
+      "FDR_threshold": "BH FDR < 0.05 is the usual genome-wide default, not a journal figure rule.",
+      "colors": "ggsci npg-like up/down/ns colours. Not an official Nature/Cell palette.",
+      "label_top_genes": "Numeric default (10) used only when the user enables labelling."
+    }
+  },
+  "user_questions": [
+    {
+      "id": "purpose",
+      "round": 1,
+      "question": "这张图的用途是什么？",
+      "options": ["internal", "publication"],
+      "required": true,
+      "spec_path": "purpose",
+      "skip_if_known": true
+    },
+    {
+      "id": "journal_style",
+      "round": 1,
+      "question": "目标期刊是什么？",
+      "options": [
+        "Nature",
+        "Cell",
+        "Science",
+        "Nature Communications",
+        "Cancer Cell",
+        "Microbiome",
+        "mSystems",
+        "Custom"
+      ],
+      "required": true,
+      "spec_path": "journal_style",
+      "ask_if": {"purpose": "publication"},
+      "skip_if_known": true
+    },
+    {
+      "id": "output_size",
+      "round": 1,
+      "question": "输出尺寸？",
+      "options": ["single column", "double column", "custom"],
+      "required": true,
+      "spec_path": "size.column",
+      "skip_if_known": true
+    },
+    {
+      "id": "data_file",
+      "round": 2,
+      "question": "请上传或指定差异表达表（CSV/TSV）。",
+      "options": [],
+      "required": true,
+      "spec_path": "plot.data.source",
+      "skip_if_known": true
+    },
+    {
+      "id": "log2FC_column",
+      "round": 2,
+      "question": "你的 log2FC 列叫什么？",
+      "options": [],
+      "required": true,
+      "spec_path": "plot.data.log2fc_column",
+      "common_names": ["log2FoldChange", "log2FC", "logFC", "log2_fc"],
+      "skip_if_known": true
+    },
+    {
+      "id": "gene_column",
+      "round": 2,
+      "question": "基因名列叫什么？",
+      "options": [],
+      "required": true,
+      "spec_path": "plot.data.gene_column",
+      "common_names": ["gene", "Gene", "symbol", "gene_name", "GeneID"],
+      "skip_if_known": true
+    },
+    {
+      "id": "significance_metric",
+      "round": 2,
+      "question": "你的显著性指标是什么？",
+      "options": ["p-value", "FDR"],
+      "required": true,
+      "spec_path": "plot.statistics.significance_metric",
+      "maps": {
+        "p-value": "pvalue",
+        "FDR": "fdr"
+      },
+      "skip_if_known": true
+    },
+    {
+      "id": "pvalue_column",
+      "round": 2,
+      "question": "显著性数值所在列叫什么？",
+      "options": [],
+      "required": true,
+      "spec_path": "plot.data.significance_column",
+      "common_names": ["padj", "FDR", "fdr", "pvalue", "p.value", "PValue", "p_value"],
+      "skip_if_known": true
+    },
+    {
+      "id": "thresholds",
+      "round": 3,
+      "question": "显著性阈值是否使用默认 |log2FC| >= 1 且 FDR <= 0.05？",
+      "options": ["yes, use defaults", "no, I will specify"],
+      "required": true,
+      "spec_path": "plot.statistics",
+      "defaults_if_yes": {
+        "log2FC_threshold": 1,
+        "FDR_threshold": 0.05
+      },
+      "skip_if_known": true
+    },
+    {
+      "id": "label_top_genes",
+      "round": 3,
+      "question": "是否标记显著基因？",
+      "options": ["yes", "no"],
+      "required": false,
+      "spec_path": "plot.labels.enabled",
+      "follow_up_if_yes": {
+        "id": "label_mode",
+        "question": "标记方式？",
+        "options": ["top_n", "gene_list"]
+      }
+    }
+  ],
+  "question_policy": {
+    "max_questions_per_turn": 3,
+    "do_not_ask_all_at_once": true,
+    "order": ["round", "required"],
+    "notes": "Requirement Agent must emit only unanswered questions from the current round, at most 3."
+  },
+  "statistical_rules": {
+    "multiple_testing_correction": "Benjamini-Hochberg recommended",
+    "default_significance": "FDR < 0.05",
+    "default_effect_size": "|log2FC| >= 1",
+    "y_axis": "-log10(FDR) when significance_metric is fdr; -log10(p) when it is pvalue",
+    "grouping": {
+      "up": "log2FC >= threshold AND significance <= threshold",
+      "down": "log2FC <= -threshold AND significance <= threshold",
+      "ns": "otherwise"
+    },
+    "warnings": [
+      "For genome-wide RNA-seq, prefer FDR over raw p-value for colouring significance.",
+      "If the user only has raw p-values, keep significance_metric=pvalue and state that no BH correction was applied in this figure.",
+      "Do not invent a DE method (DESeq2/edgeR/limma); the table is assumed to already contain log2FC and p/FDR."
+    ],
+    "status": "recommended_default"
+  },
+  "visual_rules": {
+    "point_size": {
+      "default": 1.5,
+      "if_n_gt_30000": 0.8,
+      "if_n_gt_80000": 0.4,
+      "status": "recommended_default"
+    },
+    "font_size": {
+      "source": "journal profile",
+      "fallback": {
+        "axis_text": 7,
+        "axis_title": 8,
+        "legend": 7
+      }
+    },
+    "legend_position": {
+      "default": "right",
+      "avoid": "legend wider than ~20% of the figure",
+      "status": "recommended_default"
+    },
+    "color_rules": {
+      "up": "#E64B35",
+      "down": "#4DBBD5",
+      "ns": "#B0B0B0",
+      "palette_id": "npg_volcano",
+      "status": "recommended_default",
+      "notes": "Not an official journal palette. Prefer colourblind-safer red/cyan over red/green."
+    },
+    "threshold_line_style": {
+      "linetype": "dashed",
+      "linewidth": 0.4,
+      "colour": "#555555",
+      "draw_vertical_log2fc": true,
+      "draw_horizontal_significance": true,
+      "status": "recommended_default"
+    },
+    "theme": {
+      "ggplot_theme": "theme_classic",
+      "grid": false,
+      "panel_border": false,
+      "background": "white",
+      "status": "recommended_default"
+    },
+    "labels": {
+      "package": "ggrepel",
+      "max_overlaps": 20,
+      "status": "recommended_default"
+    }
+  }
+}

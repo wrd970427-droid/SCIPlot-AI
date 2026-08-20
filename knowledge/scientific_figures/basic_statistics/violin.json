@@ -1,0 +1,95 @@
+{
+  "id": "basic_statistics.violin",
+  "name": "Violin plot",
+  "category": "basic_statistics",
+  "scientific_questions": [
+    "What is the distribution shape of a continuous variable by group?"
+  ],
+  "typical_data_contexts": [
+    "RNA-seq",
+    "single-cell",
+    "clinical"
+  ],
+  "data_schema_id": "grouped_numeric_table",
+  "required_fields": [
+    {
+      "role": "group",
+      "type": "categorical"
+    },
+    {
+      "role": "value",
+      "type": "numeric"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "ggplot2",
+    "ggpubr"
+  ],
+  "statistical_parameters": [],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2 theme reference",
+      "url": "https://ggplot2.tidyverse.org/reference/theme.html",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "violin",
+    "小提琴图"
+  ],
+  "user_intent_examples": [
+    "用小提琴图看分布"
+  ],
+  "negative_intents": [],
+  "capability_level": "core",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

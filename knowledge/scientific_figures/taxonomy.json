@@ -1,0 +1,166 @@
+{
+  "schema_version": "0.1.0",
+  "categories": {
+    "basic_statistics": {
+      "label": "Basic statistics & distributions",
+      "families": [
+        "boxplot",
+        "violin",
+        "scatter",
+        "barplot",
+        "histogram",
+        "density",
+        "beeswarm",
+        "ridge",
+        "bland_altman",
+        "correlation_heatmap"
+      ]
+    },
+    "transcriptomics": {
+      "label": "Transcriptomics / differential abundance",
+      "families": [
+        "volcano",
+        "MA_plot",
+        "DEG_heatmap",
+        "expression_boxplot",
+        "expression_violin",
+        "PCA",
+        "sample_correlation",
+        "expression_profile",
+        "multi_volcano"
+      ]
+    },
+    "enrichment": {
+      "label": "Functional enrichment",
+      "families": [
+        "ORA_dotplot",
+        "ORA_barplot",
+        "GSEA_running_score",
+        "GSEA_ridge",
+        "enrichment_emap",
+        "enrichment_cnet",
+        "GO_hierarchy"
+      ]
+    },
+    "clinical": {
+      "label": "Clinical / survival / diagnostic",
+      "families": [
+        "Kaplan_Meier",
+        "Cox_forest",
+        "ROC",
+        "time_dependent_ROC",
+        "calibration",
+        "decision_curve",
+        "nomogram",
+        "competing_risk",
+        "swimmer",
+        "risk_score"
+      ]
+    },
+    "machine_learning": {
+      "label": "Machine learning diagnostics",
+      "families": [
+        "confusion_matrix",
+        "feature_importance",
+        "lasso_path",
+        "ROC_multi_model",
+        "learning_curve"
+      ]
+    },
+    "single_cell": {
+      "label": "Single-cell transcriptomics",
+      "families": [
+        "UMAP",
+        "tSNE",
+        "FeaturePlot",
+        "DotPlot",
+        "Violin_sc",
+        "marker_heatmap",
+        "cell_proportion",
+        "pseudotime",
+        "trajectory",
+        "composition_plot"
+      ]
+    },
+    "spatial_omics": {
+      "label": "Spatial omics",
+      "families": [
+        "spatial_feature",
+        "spatial_clusters"
+      ]
+    },
+    "mutation_genomics": {
+      "label": "Mutation & copy-number genomics",
+      "families": [
+        "oncoplot",
+        "mutation_frequency",
+        "lollipop",
+        "TiTv",
+        "cooccurrence",
+        "mutual_exclusivity",
+        "CNV_plot",
+        "TMB"
+      ]
+    },
+    "genomics": {
+      "label": "Genome tracks & association",
+      "families": [
+        "genomic_track",
+        "manhattan",
+        "circos_genome"
+      ]
+    },
+    "comparative_genomics": {
+      "label": "Comparative / microbial genomics",
+      "families": [
+        "phylogenetic_tree",
+        "tree_metadata",
+        "tree_heatmap",
+        "gene_presence_absence",
+        "synteny",
+        "gene_neighborhood",
+        "plasmid_map"
+      ]
+    },
+    "microbiome": {
+      "label": "Microbiome ecology",
+      "families": [
+        "abundance_bar",
+        "alpha_diversity",
+        "beta_PCoA",
+        "taxa_heatmap"
+      ]
+    },
+    "network": {
+      "label": "Networks & flows",
+      "families": [
+        "network",
+        "chord",
+        "Sankey",
+        "alluvial",
+        "arc_diagram"
+      ]
+    },
+    "cell_communication": {
+      "label": "Cell–cell communication",
+      "families": [
+        "cellchat_circle",
+        "ligand_receptor_bubble"
+      ]
+    },
+    "multiomics": {
+      "label": "Multi-omics integration views",
+      "families": [
+        "multiomics_heatmap",
+        "correlation_network_multi"
+      ]
+    },
+    "time_series": {
+      "label": "Time-series / longitudinal",
+      "families": [
+        "time_course_line",
+        "STEM_heatmap"
+      ]
+    }
+  }
+}

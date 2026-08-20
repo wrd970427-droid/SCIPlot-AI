@@ -1,0 +1,394 @@
+{
+  "schema_version": "0.1.0",
+  "schemas": {
+    "differential_expression_table": {
+      "required_roles": [
+        "feature_id",
+        "effect_size",
+        "significance"
+      ],
+      "description": "Tidy DE table (RNA-seq/proteomics/metabolomics)"
+    },
+    "survival_table": {
+      "required_roles": [
+        "time",
+        "status",
+        "group"
+      ]
+    },
+    "survival_prediction_table": {
+      "required_roles": [
+        "time",
+        "status",
+        "marker"
+      ]
+    },
+    "expression_matrix_with_annotation": {
+      "required_roles": [
+        "feature_id",
+        "sample_expression"
+      ],
+      "shape": "matrix"
+    },
+    "numeric_matrix": {
+      "required_roles": [
+        "feature_or_sample_matrix"
+      ],
+      "shape": "matrix"
+    },
+    "long_expression_table": {
+      "required_roles": [
+        "feature_id",
+        "group",
+        "expression"
+      ]
+    },
+    "enrichment_table": {
+      "required_roles": [
+        "term",
+        "significance"
+      ]
+    },
+    "gsea_result_table": {
+      "required_roles": [
+        "term"
+      ]
+    },
+    "grouped_numeric_table": {
+      "required_roles": [
+        "group",
+        "value"
+      ]
+    },
+    "grouped_count_table": {
+      "required_roles": [
+        "category",
+        "value"
+      ]
+    },
+    "single_numeric_table": {
+      "required_roles": [
+        "value"
+      ]
+    },
+    "two_numeric_table": {
+      "required_roles": [
+        "x",
+        "y"
+      ]
+    },
+    "paired_numeric_table": {
+      "required_roles": [
+        "method_a",
+        "method_b"
+      ]
+    },
+    "binary_prediction_table": {
+      "required_roles": [
+        "score",
+        "label"
+      ]
+    },
+    "prediction_probability_table": {
+      "required_roles": [
+        "predicted_risk",
+        "observed_outcome"
+      ]
+    },
+    "cox_result_table": {
+      "required_roles": [
+        "covariate",
+        "HR",
+        "CI_low",
+        "CI_high"
+      ]
+    },
+    "cox_model_input": {
+      "required_roles": [
+        "covariates",
+        "outcome_model"
+      ]
+    },
+    "competing_risk_table": {
+      "required_roles": [
+        "time",
+        "event_type",
+        "group"
+      ]
+    },
+    "patient_timeline_table": {
+      "required_roles": [
+        "patient_id",
+        "start",
+        "end"
+      ]
+    },
+    "classification_result_table": {
+      "required_roles": [
+        "truth",
+        "prediction"
+      ]
+    },
+    "feature_importance_table": {
+      "required_roles": [
+        "feature",
+        "importance"
+      ]
+    },
+    "glmnet_path_table": {
+      "required_roles": [
+        "lambda",
+        "coefficient",
+        "feature"
+      ]
+    },
+    "model_metric_by_size_table": {
+      "required_roles": [
+        "train_size",
+        "metric",
+        "split"
+      ]
+    },
+    "single_cell_embedding": {
+      "required_roles": [
+        "cell_id",
+        "dimension_1",
+        "dimension_2"
+      ]
+    },
+    "single_cell_embedding_with_feature": {
+      "required_roles": [
+        "cell_id",
+        "dimension_1",
+        "dimension_2",
+        "feature_value"
+      ]
+    },
+    "single_cell_dot_summary": {
+      "required_roles": [
+        "feature",
+        "identity",
+        "avg_exp",
+        "pct_exp"
+      ]
+    },
+    "cell_proportion_table": {
+      "required_roles": [
+        "sample",
+        "cell_type"
+      ]
+    },
+    "trajectory_graph": {
+      "required_roles": [
+        "node",
+        "edge"
+      ]
+    },
+    "spatial_spot_table": {
+      "required_roles": [
+        "spot_id",
+        "x",
+        "y"
+      ]
+    },
+    "mutation_table": {
+      "required_roles": [
+        "sample",
+        "gene",
+        "variant_class"
+      ]
+    },
+    "mutation_summary_table": {
+      "required_roles": [
+        "gene",
+        "frequency"
+      ]
+    },
+    "mutation_protein_table": {
+      "required_roles": [
+        "gene",
+        "aa_position",
+        "variant_class"
+      ]
+    },
+    "cnv_segment_table": {
+      "required_roles": [
+        "sample",
+        "chrom",
+        "start",
+        "end",
+        "segment_mean"
+      ]
+    },
+    "tmb_table": {
+      "required_roles": [
+        "sample",
+        "TMB"
+      ]
+    },
+    "genomic_interval_table": {
+      "required_roles": [
+        "chrom",
+        "start",
+        "end",
+        "score"
+      ]
+    },
+    "gwas_association_table": {
+      "required_roles": [
+        "chrom",
+        "position",
+        "pvalue"
+      ]
+    },
+    "multi_track_genomic_table": {
+      "required_roles": [
+        "chrom",
+        "start",
+        "end"
+      ]
+    },
+    "tree_newick": {
+      "required_roles": [
+        "tree"
+      ]
+    },
+    "tree_with_metadata": {
+      "required_roles": [
+        "tree",
+        "tip_metadata"
+      ]
+    },
+    "tree_with_matrix": {
+      "required_roles": [
+        "tree",
+        "feature_matrix"
+      ]
+    },
+    "gene_pa_matrix": {
+      "required_roles": [
+        "genome",
+        "gene",
+        "presence"
+      ],
+      "shape": "matrix"
+    },
+    "synteny_link_table": {
+      "required_roles": [
+        "genome_a",
+        "genome_b",
+        "start_a",
+        "start_b"
+      ]
+    },
+    "gene_feature_table": {
+      "required_roles": [
+        "start",
+        "end",
+        "feature"
+      ]
+    },
+    "taxa_abundance_table": {
+      "required_roles": [
+        "sample",
+        "taxon",
+        "abundance"
+      ]
+    },
+    "taxa_abundance_matrix": {
+      "required_roles": [
+        "taxon",
+        "sample",
+        "abundance"
+      ],
+      "shape": "matrix"
+    },
+    "alpha_diversity_table": {
+      "required_roles": [
+        "sample",
+        "index",
+        "group"
+      ]
+    },
+    "distance_ordination_table": {
+      "required_roles": [
+        "sample",
+        "Axis1",
+        "Axis2",
+        "group"
+      ]
+    },
+    "network_edges": {
+      "required_roles": [
+        "source",
+        "target"
+      ]
+    },
+    "alluvial_table": {
+      "required_roles": [
+        "axis1",
+        "axis2",
+        "freq"
+      ]
+    },
+    "cellchat_network": {
+      "required_roles": [
+        "source_celltype",
+        "target_celltype",
+        "weight"
+      ]
+    },
+    "ligand_receptor_table": {
+      "required_roles": [
+        "ligand",
+        "receptor",
+        "source",
+        "target",
+        "score"
+      ]
+    },
+    "multi_matrix_bundle": {
+      "required_roles": [
+        "sample_id",
+        "layer_matrices"
+      ]
+    },
+    "time_course_table": {
+      "required_roles": [
+        "feature_id",
+        "time",
+        "value"
+      ]
+    },
+    "time_course_matrix": {
+      "required_roles": [
+        "feature_id",
+        "timepoint_matrix"
+      ],
+      "shape": "matrix"
+    },
+    "group_numeric_table": {
+      "id": "group_numeric_table",
+      "description": "Tidy table with categorical group and continuous value",
+      "fields": [
+        {
+          "role": "group",
+          "type": "categorical"
+        },
+        {
+          "role": "value",
+          "type": "numeric"
+        },
+        {
+          "role": "sample_id",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "required_roles": [
+        "group",
+        "value"
+      ]
+    }
+  }
+}

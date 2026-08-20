@@ -1,0 +1,135 @@
+{
+  "id": "basic_statistics.scatter",
+  "name": "Scatter plot",
+  "category": "basic_statistics",
+  "scientific_questions": [
+    "Are two continuous variables associated?"
+  ],
+  "typical_data_contexts": [
+    "RNA-seq",
+    "clinical",
+    "proteomics"
+  ],
+  "data_schema_id": "two_numeric_table",
+  "required_fields": [
+    {
+      "role": "x",
+      "type": "numeric",
+      "description": "X-axis continuous variable"
+    },
+    {
+      "role": "y",
+      "type": "numeric",
+      "description": "Y-axis continuous variable"
+    }
+  ],
+  "optional_fields": [
+    {
+      "role": "group",
+      "type": "categorical",
+      "description": "Optional color grouping"
+    },
+    {
+      "role": "size",
+      "type": "numeric",
+      "description": "Optional point-size variable"
+    }
+  ],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "ggplot2",
+    "ggpubr"
+  ],
+  "statistical_parameters": [
+    {
+      "name": "correlation_method",
+      "default": "pearson"
+    }
+  ],
+  "visual_parameters": [
+    {
+      "name": "alpha",
+      "description": "Point transparency",
+      "default": 0.7
+    },
+    {
+      "name": "point_size",
+      "description": "Base point size when size aesthetic unused",
+      "default": 1.6
+    },
+    {
+      "name": "line_width",
+      "description": "Axis line width",
+      "default": 0.5
+    },
+    {
+      "name": "point_color",
+      "description": "Fixed point color",
+      "default": "#3C5488"
+    },
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2 theme reference",
+      "url": "https://ggplot2.tidyverse.org/reference/theme.html",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "scatter",
+    "散点图",
+    "correlation"
+  ],
+  "user_intent_examples": [
+    "看两个指标相关性",
+    "绘制散点图"
+  ],
+  "negative_intents": [],
+  "capability_level": "core",
+  "implementation_status": "execution_verified",
+  "notes": "Implemented via Generic Figure Engine ScatterStrategy (LLM maps columns only; R is rule-generated)."
+}

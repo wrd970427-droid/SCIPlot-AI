@@ -1,0 +1,100 @@
+{
+  "id": "mutation_genomics.oncoplot",
+  "name": "Oncoplot / oncoPrint",
+  "category": "mutation_genomics",
+  "scientific_questions": [
+    "Which genes are recurrently altered across samples?"
+  ],
+  "typical_data_contexts": [
+    "WES",
+    "panel sequencing"
+  ],
+  "data_schema_id": "mutation_table",
+  "required_fields": [
+    {
+      "role": "sample",
+      "type": "string"
+    },
+    {
+      "role": "gene",
+      "type": "string"
+    },
+    {
+      "role": "variant_class",
+      "type": "categorical"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "maftools",
+    "ComplexHeatmap"
+  ],
+  "statistical_parameters": [],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [
+    "mutation_genomics.TMB",
+    "mutation_genomics.mutation_frequency"
+  ],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "maftools",
+      "url": "https://bioconductor.org/packages/maftools/",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "oncoplot",
+    "oncoPrint",
+    "瀑布图"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "advanced",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

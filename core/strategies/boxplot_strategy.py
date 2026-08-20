@@ -1,0 +1,203 @@
+"""Boxplot code-generation strategy — GenericFigureSpecification → ggplot2 R."""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+from core.strategies.base import CodeGenerationStrategy
+from schemas.generic_figure_spec import GenericFigureSpecification
+
+FIGURE_ID = "basic_statistics.boxplot"
+
+
+def _r_str(value: object) -> str:
+    text = str(value).replace("\\", "\\\\").replace('"', '\\"')
+    return f'"{text}"'
+
+
+def _r_bool(value: object) -> str:
+    return "TRUE" if bool(value) else "FALSE"
+
+
+class BoxplotStrategy(CodeGenerationStrategy):
+    """Generate tidy-table boxplot / violin R from GenericFigureSpecification only."""
+
+    figure_definition_id = FIGURE_ID
+
+    def generate(
+        self,
+        spec: GenericFigureSpecification,
+        output_path: str | Path | None = None,
+    ) -> str:
+        if spec.figure_definition_id != self.figure_definition_id:
+            raise ValueError(
+                f"BoxplotStrategy only supports {self.figure_definition_id}, "
+                f"got {spec.figure_definition_id}"
+            )
+        code = self._render(spec)
+        if output_path is not None:
+            path = Path(output_path)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(code, encoding="utf-8")
+        return code
+
+    def _render(self, spec: GenericFigureSpecification) -> str:
+        mapping = spec.data_mapping
+        group_col = mapping.get("group")
+        value_col = mapping.get("value")
+        if not group_col or not value_col:
+            raise ValueError("BoxplotStrategy requires data_mapping roles: group, value")
+
+        visual = spec.visual_parameters
+        output = spec.output or {"pdf": True, "svg": True, "png": True}
+        source = spec.data_source or "input.csv"
+
+        variant = str(visual.get("variant", "boxplot")).lower()
+        if variant not in {"boxplot", "violin"}:
+            variant = "boxplot"
+
+        alpha = float(visual.get("alpha", 0.7))
+        line_width = float(visual.get("line_width", 0.5))
+        point_size = float(visual.get("point_size", 1.2))
+        point_jitter = bool(visual.get("point_jitter", False))
+        fill = visual.get("fill", "group")
+        width_mm = float(visual.get("width_mm", 89))
+        height_mm = float(visual.get("height_mm", 70))
+        font_size = float(visual.get("font_size", 7))
+        legend_position = str(visual.get("legend_position", "right"))
+        border = str(visual.get("border", "none")).lower()
+        dpi = int(visual.get("dpi", 600))
+
+        # fill="group" maps to the group column; otherwise treat as fixed color.
+        if str(fill).lower() in {"group", mapping.get("group", "group")}:
+            fill_aes = f"fill = `{group_col}`"
+            fill_fixed = None
+        else:
+            fill_aes = None
+            fill_fixed = str(fill)
+
+        if variant == "violin":
+            geom_line = (
+                f"  geom_violin(linewidth = line_width, alpha = point_alpha"
+                + (f", fill = {_r_str(fill_fixed)}" if fill_fixed else "")
+                + ")"
+            )
+        else:
+            geom_line = (
+                f"  geom_boxplot(linewidth = line_width, alpha = point_alpha, outlier.size = point_size"
+                + (f", fill = {_r_str(fill_fixed)}" if fill_fixed else "")
+                + ")"
+            )
+
+        aes_parts = [f"x = `{group_col}`", f"y = `{value_col}`"]
+        if fill_aes:
+            aes_parts.append(fill_aes)
+        aes_block = ", ".join(aes_parts)
+
+        jitter_block = ""
+        if point_jitter:
+            jitter_block = (
+                " +\n  geom_jitter(width = 0.15, height = 0, size = point_size, "
+                "alpha = min(1, point_alpha + 0.15), color = \"#333333\")"
+            )
+
+        if border == "full":
+            border_theme = (
+                "    panel.border = element_rect(colour = \"black\", fill = NA, "
+                "linewidth = line_width),\n"
+                "    axis.line = element_blank()"
+            )
+        else:
+            border_theme = (
+                "    panel.border = element_blank(),\n"
+                "    axis.line = element_line(linewidth = line_width, colour = \"black\")"
+            )
+
+        save_parts: list[str] = []
+        if output.get("pdf", True):
+            save_parts.append(
+                """
+ggsave(
+  "boxplot.pdf",
+  plot = p,
+  width = width_mm,
+  height = height_mm,
+  units = "mm",
+  device = cairo_pdf
+)"""
+            )
+        if output.get("svg", True):
+            save_parts.append(
+                """
+ggsave(
+  "boxplot.svg",
+  plot = p,
+  width = width_mm,
+  height = height_mm,
+  units = "mm",
+  device = svglite
+)"""
+            )
+        if output.get("png", True):
+            save_parts.append(
+                """
+ggsave(
+  "boxplot.png",
+  plot = p,
+  width = width_mm,
+  height = height_mm,
+  units = "mm",
+  dpi = dpi
+)"""
+            )
+        save_block = "\n".join(save_parts)
+
+        return f"""# boxplot.R
+# Generated by SCIPlot Generic Figure Engine — BoxplotStrategy
+# Source: GenericFigureSpecification (no free-text NL)
+
+suppressPackageStartupMessages({{
+  library(ggplot2)
+  library(svglite)
+}})
+
+input_file <- {_r_str(source)}
+group_col <- {_r_str(group_col)}
+value_col <- {_r_str(value_col)}
+
+point_size <- {point_size}
+point_alpha <- {alpha}
+line_width <- {line_width}
+width_mm <- {width_mm}
+height_mm <- {height_mm}
+dpi <- {dpi}
+font_size <- {font_size}
+legend_position <- {_r_str(legend_position)}
+variant <- {_r_str(variant)}
+
+if (!file.exists(input_file)) {{
+  stop("Input table not found: ", input_file)
+}}
+df <- read.csv(input_file, stringsAsFactors = FALSE, check.names = FALSE, na.strings = c("NA", "", "NaN"))
+
+required_cols <- c(group_col, value_col)
+missing_cols <- setdiff(required_cols, names(df))
+if (length(missing_cols) > 0) {{
+  stop("Missing columns in input table: ", paste(missing_cols, collapse = ", "))
+}}
+
+df[[group_col]] <- as.factor(as.character(df[[group_col]]))
+df[[value_col]] <- as.numeric(df[[value_col]])
+df <- df[is.finite(df[[value_col]]), , drop = FALSE]
+
+p <- ggplot(df, aes({aes_block})) +
+{geom_line}{jitter_block} +
+  theme_classic(base_size = font_size) +
+  theme(
+    legend.position = legend_position,
+{border_theme}
+  ) +
+  labs(x = group_col, y = value_col)
+
+{save_block}
+"""

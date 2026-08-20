@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1.0",
+  "source": "ggplot2 theme / element docs (tidyverse)",
+  "references": [
+    "https://ggplot2.tidyverse.org/reference/theme.html",
+    "https://ggplot2.tidyverse.org/reference/element.html"
+  ],
+  "concepts": [
+    {
+      "id": "axis_line",
+      "ggplot": "theme(axis.line = element_line(linewidth=...))",
+      "spec_path": "geometry.line_width",
+      "meaning": "坐标轴线（外边框/L 形轴），不是图内阈值虚线",
+      "user_phrases": ["加粗边框", "加粗外边框", "轴线加粗", "坐标轴加粗"]
+    },
+    {
+      "id": "threshold_lines",
+      "ggplot": "geom_hline / geom_vline(linetype='dashed', linewidth=...)",
+      "spec_path": "geometry.threshold_line_width",
+      "meaning": "图内部阈值参考虚线（log2FC / FDR cutoffs）",
+      "user_phrases": ["虚线变细", "内部虚线", "阈值线变细", "参考线变细"]
+    },
+    {
+      "id": "axis_ticks",
+      "ggplot": "theme(axis.ticks = element_line(linewidth=...))",
+      "spec_path": "geometry.line_width",
+      "meaning": "刻度线粗细，SCIPlot 与 axis.line 共用 line_width"
+    },
+    {
+      "id": "panel_border",
+      "ggplot": "theme(panel.border = element_rect(colour='black', fill=NA, linewidth=...))",
+      "spec_path": "theme.border",
+      "meaning": "绘图区四周完整矩形边框（全边框/box）",
+      "user_phrases": ["全边框", "四周加边框", "加黑色方框", "panel border", "boxed panel"]
+    },
+    {
+      "id": "panel_grid",
+      "ggplot": "theme(panel.grid.major / panel.grid.minor)",
+      "spec_path": "theme.grid",
+      "meaning": "背景网格线"
+    },
+    {
+      "id": "legend_position",
+      "ggplot": "theme(legend.position)",
+      "spec_path": "theme.legend_position",
+      "meaning": "图例位置：right/left/bottom/top/none"
+    },
+    {
+      "id": "geom_point_size",
+      "ggplot": "geom_point(size=...)",
+      "spec_path": "geometry.point_size",
+      "meaning": "散点大小"
+    },
+    {
+      "id": "text_size",
+      "ggplot": "theme(axis.text / axis.title / legend.text)",
+      "spec_path": "font.*_size",
+      "meaning": "文字字号"
+    }
+  ],
+  "disambiguation": [
+    {
+      "problem": "用户说『边框』可能指 axis.line 或 panel.border",
+      "rule": "若出现『加粗/加粗边框/轴线/外边框』且同时否定『全边框/四周/方框』→ 只改 line_width，禁止 panel_border=full",
+      "rule_if_explicit_box": "若出现『全边框/四周边框/方框/boxed』→ panel_border=full"
+    },
+    {
+      "problem": "轴线加粗会连带阈值虚线一起变粗",
+      "rule": "line_width 只控制 axis.line/ticks/panel.border；threshold_line_width 只控制 geom_hline/vline。『只加粗外边框，虚线变细』必须拆成两个参数。"
+    }
+  ]
+}

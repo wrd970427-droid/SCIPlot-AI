@@ -1,0 +1,93 @@
+{
+  "id": "basic_statistics.ridge",
+  "name": "Ridge plot",
+  "category": "basic_statistics",
+  "scientific_questions": [
+    "How do many group-wise densities compare compactly?"
+  ],
+  "typical_data_contexts": [
+    "RNA-seq",
+    "proteomics"
+  ],
+  "data_schema_id": "grouped_numeric_table",
+  "required_fields": [
+    {
+      "role": "group",
+      "type": "categorical"
+    },
+    {
+      "role": "value",
+      "type": "numeric"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "ggridges",
+    "ggplot2"
+  ],
+  "statistical_parameters": [],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2 theme reference",
+      "url": "https://ggplot2.tidyverse.org/reference/theme.html",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "ridge",
+    "山脊图",
+    "ggridges"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "advanced",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

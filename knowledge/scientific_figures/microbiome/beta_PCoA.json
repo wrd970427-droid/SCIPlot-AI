@@ -1,0 +1,105 @@
+{
+  "id": "microbiome.beta_PCoA",
+  "name": "Beta-diversity PCoA",
+  "category": "microbiome",
+  "scientific_questions": [
+    "Do communities separate in ordination space?"
+  ],
+  "typical_data_contexts": [
+    "16S",
+    "metagenomics"
+  ],
+  "data_schema_id": "distance_ordination_table",
+  "required_fields": [
+    {
+      "role": "sample",
+      "type": "string"
+    },
+    {
+      "role": "Axis1",
+      "type": "numeric"
+    },
+    {
+      "role": "Axis2",
+      "type": "numeric"
+    },
+    {
+      "role": "group",
+      "type": "categorical"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "ggplot2",
+    "vegan"
+  ],
+  "statistical_parameters": [
+    {
+      "name": "distance_metric",
+      "default": "bray"
+    }
+  ],
+  "visual_parameters": [
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [],
+  "compatible_panels": [],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2 theme reference",
+      "url": "https://ggplot2.tidyverse.org/reference/theme.html",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "PCoA",
+    "beta diversity"
+  ],
+  "user_intent_examples": [],
+  "negative_intents": [],
+  "capability_level": "core",
+  "implementation_status": "catalog_only",
+  "notes": ""
+}

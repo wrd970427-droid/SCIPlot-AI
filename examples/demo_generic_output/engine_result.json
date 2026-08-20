@@ -1,0 +1,97 @@
+{
+  "status": "success",
+  "figure_definition_id": "transcriptomics.volcano",
+  "message": "R script generated",
+  "missing_fields": [],
+  "questions": [],
+  "requirement": {
+    "figure_definition_id": "transcriptomics.volcano",
+    "data_schema_id": "differential_expression_table",
+    "status": "ready",
+    "missing_fields": [],
+    "questions": [],
+    "known_mapping": {
+      "feature_id": "gene",
+      "effect_size": "log2FoldChange",
+      "significance": "padj",
+      "data_source": "input.csv"
+    },
+    "statistics": {
+      "log2FC_threshold": 1.0,
+      "significance_threshold": 0.05,
+      "significance_metric": "fdr",
+      "multiple_testing_method": "BH"
+    },
+    "visual_parameters": {
+      "point_size": 1.5,
+      "alpha": 0.7,
+      "up_color": "#E64B35",
+      "down_color": "#4DBBD5",
+      "neutral_color": "#B0B0B0",
+      "label_count": 10,
+      "label_repel": true,
+      "threshold_line_width": 0.35,
+      "threshold_line_type": "dashed",
+      "width_mm": 89,
+      "height_mm": 70,
+      "font_size": 7,
+      "legend_position": "right",
+      "border": "none"
+    },
+    "style_profile": {
+      "journal_style": "Nature"
+    },
+    "message": "ready"
+  },
+  "spec": {
+    "spec_version": "0.2.0",
+    "figure_definition_id": "transcriptomics.volcano",
+    "data_schema_id": "differential_expression_table",
+    "data_mapping": {
+      "feature_id": "gene",
+      "effect_size": "log2FoldChange",
+      "significance": "padj"
+    },
+    "data_source": "input.csv",
+    "statistics": {
+      "log2FC_threshold": 1.0,
+      "significance_threshold": 0.05,
+      "significance_metric": "fdr",
+      "multiple_testing_method": "BH"
+    },
+    "visual_parameters": {
+      "point_size": 1.5,
+      "alpha": 0.7,
+      "up_color": "#E64B35",
+      "down_color": "#4DBBD5",
+      "neutral_color": "#B0B0B0",
+      "label_count": 10,
+      "label_repel": true,
+      "threshold_line_width": 0.35,
+      "threshold_line_type": "dashed",
+      "width_mm": 89,
+      "height_mm": 70,
+      "font_size": 7,
+      "legend_position": "right",
+      "border": "none"
+    },
+    "style_profile": {
+      "journal_style": "Nature"
+    },
+    "output": {
+      "pdf": true,
+      "svg": true,
+      "png": true
+    },
+    "qc_requirement": {
+      "min_font_pt": 6,
+      "min_line_width": 0.3,
+      "require_vector": true
+    },
+    "legacy_volcano_spec": null
+  },
+  "r_script_path": "D:\\AI_project\\Agent\\examples\\demo_generic_output\\figure.R",
+  "output_files": [],
+  "qc_report": null,
+  "log": ""
+}

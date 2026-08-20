@@ -1,0 +1,182 @@
+{
+  "id": "transcriptomics.volcano",
+  "name": "Volcano plot",
+  "category": "transcriptomics",
+  "scientific_questions": [
+    "Which features show statistically significant differential abundance or expression?"
+  ],
+  "typical_data_contexts": [
+    "RNA-seq",
+    "proteomics",
+    "metabolomics"
+  ],
+  "data_schema_id": "differential_expression_table",
+  "required_fields": [
+    {
+      "role": "feature_id",
+      "type": "string"
+    },
+    {
+      "role": "effect_size",
+      "type": "numeric"
+    },
+    {
+      "role": "significance",
+      "type": "numeric"
+    }
+  ],
+  "optional_fields": [],
+  "accepted_data_shapes": [
+    "tidy_table"
+  ],
+  "recommended_r_packages": [
+    "ggplot2",
+    "ggrepel"
+  ],
+  "statistical_parameters": [
+    {
+      "name": "log2FC_threshold",
+      "default": 1.0
+    },
+    {
+      "name": "significance_threshold",
+      "default": 0.05
+    },
+    {
+      "name": "significance_metric",
+      "default": "fdr"
+    },
+    {
+      "name": "multiple_testing_method",
+      "default": "BH"
+    }
+  ],
+  "visual_parameters": [
+    {
+      "name": "point_size",
+      "default": 1.5
+    },
+    {
+      "name": "alpha",
+      "default": 0.7
+    },
+    {
+      "name": "up_color",
+      "default": "#E64B35"
+    },
+    {
+      "name": "down_color",
+      "default": "#4DBBD5"
+    },
+    {
+      "name": "neutral_color",
+      "default": "#B0B0B0"
+    },
+    {
+      "name": "label_count",
+      "default": 10
+    },
+    {
+      "name": "label_repel",
+      "default": true
+    },
+    {
+      "name": "threshold_line_width",
+      "default": 0.35
+    },
+    {
+      "name": "threshold_line_type",
+      "default": "dashed"
+    },
+    {
+      "name": "width_mm",
+      "description": "Figure width",
+      "default": 89
+    },
+    {
+      "name": "height_mm",
+      "description": "Figure height",
+      "default": 70
+    },
+    {
+      "name": "font_size",
+      "description": "Base text size (pt)",
+      "default": 7
+    },
+    {
+      "name": "legend_position",
+      "description": "Legend placement",
+      "default": "right"
+    },
+    {
+      "name": "border",
+      "description": "panel.border none/full",
+      "default": "none"
+    }
+  ],
+  "variants": [
+    "classic",
+    "labeled",
+    "multi_contrast"
+  ],
+  "compatible_panels": [
+    "transcriptomics.DEG_heatmap",
+    "enrichment.GSEA_running_score",
+    "enrichment.ORA_dotplot"
+  ],
+  "privacy": {
+    "llm_allowed": [
+      "column_schema",
+      "field_roles",
+      "figure_spec",
+      "desensitized_prompt"
+    ],
+    "local_only": [
+      "raw_rows",
+      "patient_level_values",
+      "sample_level_values",
+      "dataframe_values"
+    ]
+  },
+  "sources": [
+    {
+      "title": "ggplot2",
+      "url": "https://ggplot2.tidyverse.org/",
+      "doi": "",
+      "verification_status": "verified"
+    },
+    {
+      "title": "ggrepel",
+      "url": "https://cran.r-project.org/package=ggrepel",
+      "doi": "",
+      "verification_status": "verified"
+    },
+    {
+      "title": "SCIPlot AI existing volcano implementation",
+      "url": "schemas/figure_spec.py",
+      "doi": "",
+      "verification_status": "verified"
+    }
+  ],
+  "retrieval_keywords": [
+    "volcano",
+    "火山图",
+    "DEG",
+    "differential expression",
+    "FDR",
+    "fold change",
+    "差异基因"
+  ],
+  "user_intent_examples": [
+    "我想展示两组RNA-seq差异基因",
+    "哪些基因上调和下调最明显",
+    "做一个带FDR和fold-change的差异图"
+  ],
+  "negative_intents": [
+    "展示所有样本之间的表达相似性",
+    "展示患者生存差异"
+  ],
+  "capability_level": "core",
+  "implementation_status": "qc_verified",
+  "notes": "Mapped to existing SCIPlot Volcano Spec / R / QC pipeline."
+}
