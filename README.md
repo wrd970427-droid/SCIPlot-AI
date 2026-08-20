@@ -165,8 +165,6 @@ Catalog 说明见：[SCIPLOT_FIGURE_CATALOG_REPORT.md](./SCIPLOT_FIGURE_CATALOG_
 
 欢迎 Issue / PR：优先讨论「下一个最该实现的 Figure family」与隐私边界。
 
-本项目以 **MIT License** 开源发布——可自由使用、修改与二次分发；若你在论文或产品中使用，欢迎注明 SCIPlot AI。
-
 ---
 
 <p align="center">
