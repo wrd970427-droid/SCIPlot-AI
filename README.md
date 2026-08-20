@@ -8,6 +8,7 @@
 [![FastAPI](https://img.shields.io/badge/Demo-FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/pytest-96%20passed-success)](./tests)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-wrd970427--droid%2FSCIPlot--AI-181717?logo=github)](https://github.com/wrd970427-droid/SCIPlot-AI)
 
 ---
 
